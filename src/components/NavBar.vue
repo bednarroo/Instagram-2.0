@@ -1,6 +1,5 @@
 <template>
-  
-  <v-card
+<v-card
     class="mx-auto"
     max-width="448"
   >
@@ -38,12 +37,13 @@
       </v-main>
     </v-layout>
   </v-card>
-  <NavBar />
-  <RouterView />
+<h1>example</h1>
 </template>
 
 <script lang="ts" script="setup">
-import {RouterView} from 'vue-router'
-import NavBarVue from './components/NavBar.vue'
 
 </script>
+
+<style>
+
+</style>
