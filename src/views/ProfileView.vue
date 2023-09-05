@@ -1,11 +1,6 @@
 <template>
-  <div class="about">
-  </div>
+  <h1>Profile View</h1>
 </template>
-
-<style>
-
-</style>
 
 <script lang="ts" script="setup">
 
