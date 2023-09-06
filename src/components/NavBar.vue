@@ -1,5 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-between">
+
     <div>
       <div class="d-flex">
         <a class="navbar-brand" href="#">
@@ -10,17 +11,15 @@
     </a>
     </div>
     </div>
-    <div class="d-flex align-items-center">
 
-      
-      <div>
+    
+    <div class="d-flex align-items-center">
         <SearchProfile/>
         <button @click="showMenu" class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-     </div>
-
     </div>
+
     <div class="collapse navbar-collapse" :class="collapseNav === true ?  'show' : '' " id="navbarNavAltMarkup">
      <div class="navbar-nav">
         <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
@@ -32,8 +31,9 @@
 
     </div>
     </div>
-  </nav>
 
+
+  </nav>
 </template>
 
 <script lang="ts" setup>
