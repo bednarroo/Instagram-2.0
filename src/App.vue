@@ -6,6 +6,6 @@
 
 <script lang="ts" script="setup">
 import {RouterView} from 'vue-router'
-import NavBarVue from './components/NavBar.vue'
+import NavBar from './components/NavBar.vue'
 
 </script>

@@ -1,7 +1,5 @@
 <template>
-  <div class="about">
-    <h1>Boardview</h1>
-  </div>
+<h1>example</h1>
 </template>
 
 <style>
