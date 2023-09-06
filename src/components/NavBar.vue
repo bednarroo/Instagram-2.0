@@ -14,7 +14,7 @@
   </div>
 </nav>
   <div class="about">
-    <nav class="navbar bg-body-tertiary">
+<nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
@@ -29,9 +29,10 @@
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
 </nav>
+</div>
 </template>
 
-<script lang="ts" script="setup">
+<script lang="ts" setup>
 
 </script>
 

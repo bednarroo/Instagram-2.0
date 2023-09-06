@@ -4,7 +4,7 @@
   <RouterView />
 </template>
 
-<script lang="ts" script="setup">
+<script lang="ts" setup>
 import {RouterView} from 'vue-router'
 import NavBar from './components/NavBar.vue'
 

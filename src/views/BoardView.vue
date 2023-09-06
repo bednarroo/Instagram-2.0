@@ -6,7 +6,7 @@
 
 </style>
 
-<script lang="ts" script="setup">
+<script lang="ts" setup>
 
 
 </script>
