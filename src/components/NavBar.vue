@@ -1,38 +1,51 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Features</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link disabled" href="#">Disabled</a>
-    </div>
-  </div>
-</nav>
-  <div class="about">
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
+  <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-between">
+    <div>
+      <div class="d-flex">
+        <a class="navbar-brand" href="#">
+        <div class="d-flex">
+            <img class="mx-3" src="../assets/Instagram.webp" alt="Instagram" height="34">
+            <h2 class="mx-1">Instagram</h2>
+        </div>
     </a>
-    <button class="btn btn-primary" type="submit">Button</button>
-    <button class="btn btn-primary" type="submit">Button</button>
+    </div>
+    </div>
+    <div class="d-flex align-items-center">
 
+      
+      <div>
+        <SearchProfile/>
+        <button @click="showMenu" class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+     </div>
 
-  </div>
-  <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-</nav>
-</div>
+    </div>
+    <div class="collapse navbar-collapse" :class="collapseNav === true ?  'show' : '' " id="navbarNavAltMarkup">
+     <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+       <a class="nav-item nav-link" href="#">About</a>
+       <a class="nav-item nav-link" href="#">
+        <button class="btn btn-primary mx-2" type="submit">Login</button>
+        <button class="btn btn-primary mx-2" type="submit">Signin</button>
+        </a>
+
+    </div>
+    </div>
+  </nav>
+
 </template>
 
 <script lang="ts" setup>
+import SearchProfile from './SearchProfile.vue';
+import {ref} from 'vue'
+
+const collapseNav = ref<any>(false)
+
+const showMenu = () => {
+    collapseNav.value  = !collapseNav.value
+    console.log(collapseNav.value)
+}
 
 </script>
 
