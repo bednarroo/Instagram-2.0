@@ -1,5 +1,6 @@
 <template>
-<h1>example</h1>
+<SingleCard/>
+
 </template>
 
 <style>
@@ -7,6 +8,7 @@
 </style>
 
 <script lang="ts" setup>
+import {SingleCard} from '../components/SingleCard.vue'
 
 
 </script>
