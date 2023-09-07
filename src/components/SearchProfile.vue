@@ -1,30 +1,32 @@
 <template>
-    <div  :class="showSearch === true ? 'show' : '' " class="collapse " id="collapseExample">
-        <div>
-            <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg">
+<!-- Button trigger modal -->
+<button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <img src="../assets/search.svg" alt="" style="width: 25px;">
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Search user:</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Username</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
         </div>
-        <div>
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <img class="mx-3" src="../assets/search.svg" alt="Instagram" height="24">
-            </button>
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            <img class="mx-3" src="../assets/closebutton.png" alt="Instagram" height="24">
-            </button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
     </div>
-    <button @click="handleShowSearch" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    <img class="mx-3" src="../assets/search.svg" alt="Instagram" height="24">
-    </button>
+  </div>
+</div>
 </template>
 
 <script setup lang="ts">
-import {ref} from 'vue'
-
-const showSearch = ref(false)
-const handleShowSearch = () => {
-    showSearch.value = !showSearch.value
-    console.log(showSearch.value)
-}
 
 </script>
 

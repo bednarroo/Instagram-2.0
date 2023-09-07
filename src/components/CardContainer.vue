@@ -1,5 +1,5 @@
 <template>
-  <div class="container-xxl d-flex flex-wrap mt-5 mx-auto">
+  <div class="container-xxl d-flex flex-wrap mt-4 mx-auto">
     <SingleCard />
     <SingleCard />
     <SingleCard />
