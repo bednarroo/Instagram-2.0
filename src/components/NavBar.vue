@@ -12,24 +12,22 @@
     </div>
     </div>
 
-    
     <div class="d-flex align-items-center">
         <SearchProfile/>
         <button @click="showMenu" class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+          <span class="navbar-toggler-icon"></span>
+        </button>
     </div>
 
     <div class="collapse navbar-collapse" :class="collapseNav === true ?  'show' : '' " id="navbarNavAltMarkup">
      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+       <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
        <a class="nav-item nav-link" href="#">About</a>
-       <a class="nav-item nav-link" href="#">
-        <button class="btn btn-primary mx-2" type="submit">Login</button>
-        <button class="btn btn-primary mx-2" type="submit">Signin</button>
-        </a>
-
     </div>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <LoginSignin />
     </div>
 
 
@@ -37,7 +35,8 @@
 </template>
 
 <script lang="ts" setup>
-import SearchProfile from './SearchProfile.vue';
+import SearchProfile from './SearchProfile.vue'
+import LoginSignin from './LoginSignin.vue'
 import {ref} from 'vue'
 
 const collapseNav = ref<any>(false)
