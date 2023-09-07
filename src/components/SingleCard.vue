@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3 mx-2" style="width: 220px;">
+  <div class="card mb-3 mx-2" style="width: 250px;">
   <div class="row no-gutters">
     <div class="col-md-4">
       <img src="../assets/Instagram.webp" class="card-img" alt="...">
