@@ -1,4 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 
 // Create a single supabase client for interacting with your database
-const supabase = createClient('https://xyzcompany.supabase.co', 'public-anon-key')
+const {VITE_SUPABASE_URL: supabaseUrl , VITE_SUPABASE_KEY: supabaseKey} = import.meta.env
+
+export const supabase = createClient(supabaseUrl, supabaseKey)
+export default supabase;
