@@ -21,20 +21,20 @@
           <form>
             <div class="mb-3">
               <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="loginSigninDetial.email">
               <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
             </div>
             <div class="mb-3" v-if="showSigninOption">
-              <label for="login" class="form-label">Login</label>
-              <input type="email" class="form-control" id="login" aria-describedby="emailHelp">
+              <label for="login" class="form-label" >Login</label>
+              <input type="email" class="form-control" id="login" aria-describedby="loginHelp" v-model="loginSigninDetial.login">
               <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
             </div>
             <div class="mb-3" >
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password">
+              <label for="password" class="form-label" >Password</label>
+              <input type="password" class="form-control" id="password" v-model="loginSigninDetial.password">
             </div>
             <div class="d-flex flex-end justify-content-end">
-              <button type="submit" class="btn btn-primary">{{showTitle}}</button>
+              <button @click="handleLogInSignIn" type="button" class="btn btn-primary">{{showTitle}}</button>
             </div>
           </form>
         </div>
@@ -46,6 +46,7 @@
 
 <script setup lang="ts">
 import {ref, computed} from 'vue'
+import {supabase} from '../dataBase/index'
 
 const showSigninOption = ref(true)
 const loginSigninDetial = ref({
@@ -65,6 +66,15 @@ const changeOptionAuth = (option) => {
 const showTitle = computed( () => {
   return showSigninOption.value  === false ? "Sign in" : "Log in"
 })
+
+const handleLogInSignIn = async () =>  {
+  console.log(loginSigninDetial.value.email, loginSigninDetial.value.password )
+  const response = await supabase.auth.signUp({
+  email: loginSigninDetial.value.email,
+  password: loginSigninDetial.value.password
+})
+  console.log(response)
+}
 
 </script>
 

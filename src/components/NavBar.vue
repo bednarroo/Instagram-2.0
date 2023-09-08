@@ -26,7 +26,7 @@
     </div>
     </div>
 
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center mx-3">
       <LoginSignin />
     </div>
 
