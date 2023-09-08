@@ -68,12 +68,26 @@ const showTitle = computed( () => {
 })
 
 const handleLogInSignIn = async () =>  {
-  console.log(loginSigninDetial.value.email, loginSigninDetial.value.password )
-  const response = await supabase.auth.signUp({
+  // Registration
+  if (showSigninOption.value === true){
+    const { data, error } = await supabase.auth.signUp({
+    email: loginSigninDetial.value.email,
+    password: loginSigninDetial.value.password
+})
+    console.log(data, error)
+  return
+}
+// log in
+  else{
+  const { data, error } = await supabase.auth.signInWithPassword({
   email: loginSigninDetial.value.email,
   password: loginSigninDetial.value.password
-})
-  console.log(response)
+  })
+  if(data){
+    console.log(data)
+  }
+  return
+  }
 }
 
 </script>
