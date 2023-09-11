@@ -14,8 +14,8 @@
       </div>
       <div class="modal-body">
         <div class="d-flex px-5 justify-content-center"  role="group" aria-label="Basic example">
-          <button type="button" @click="changeOptionAuth('Login')" class="btn mx-3" :class="showSigninOption === true ? 'btn-primary' : 'btn-secondary'" >Log in</button>
-          <button type="button" @click="changeOptionAuth('Signin')" class="btn mx-3" :class="showSigninOption === true ? 'btn-secondary' : 'btn-primary' " >Sign in</button>
+          <button type="button" @click="changeOptionAuth('Login')" class="btn mx-3" :class="showSigninOption === true ? 'btn-primary' : 'btn-secondary'" >Sign in</button>
+          <button type="button" @click="changeOptionAuth('Signin')" class="btn mx-3" :class="showSigninOption === true ? 'btn-secondary' : 'btn-primary' " >Log in</button>
         </div>
         <div>
           <form>
@@ -38,6 +38,9 @@
             </div>
           </form>
         </div>
+        <div v-if="errorLogInSignIn">
+          {{ errorLogInSignIn }}
+        </div>
       </div>
     </div>
   </div>
@@ -47,15 +50,19 @@
 <script setup lang="ts">
 import {ref, computed} from 'vue'
 import {supabase} from '../dataBase/index'
+import {useCounterStore} from '../stores/userDetails.ts'
 
 const showSigninOption = ref(true)
+const errorLogInSignIn = ref<object>({})
 const loginSigninDetial = ref({
   login: "",
   email: "",
   password: ""
 })
 
-const changeOptionAuth = (option) => {
+const storeUserDetails = useCounterStore()
+
+const changeOptionAuth = (option: string) => {
   if(option === 'Login' ) {
     return showSigninOption.value = true
   } else{
@@ -64,7 +71,7 @@ const changeOptionAuth = (option) => {
 }
 
 const showTitle = computed( () => {
-  return showSigninOption.value  === false ? "Sign in" : "Log in"
+  return showSigninOption.value  === true ? "Sign in" : "Log in"
 })
 
 const handleLogInSignIn = async () =>  {
@@ -74,7 +81,21 @@ const handleLogInSignIn = async () =>  {
     email: loginSigninDetial.value.email,
     password: loginSigninDetial.value.password
 })
-    console.log(data, error)
+  if(error){
+    errorLogInSignIn.value = error
+    return
+  }
+  if(data){
+    storeUserDetails.logIn(data.user)
+  }
+  console.log(data,error)
+  // add user to users table
+  if(data){
+    const error = await supabase
+      .from('users')
+      .insert({name: 'xd', user_id: 1231, email: "sdada"})
+  }
+    console.log( error)
   return
 }
 // log in
