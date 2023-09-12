@@ -28,6 +28,7 @@
 
     <div class="d-flex align-items-center mx-3">
       <LoginSignin />
+      <button @click="signOut" type="button" class="btn btn-primary">Sign out</button>
     </div>
 
 
@@ -38,12 +39,20 @@
 import SearchProfile from './SearchProfile.vue'
 import LoginSignin from './LoginSignin.vue'
 import {ref} from 'vue'
+import {useUserStore} from '../stores/userDetails.ts'
+
+
+const userStore = useUserStore()
 
 const collapseNav = ref<any>(false)
 
 const showMenu = () => {
     collapseNav.value  = !collapseNav.value
     console.log(collapseNav.value)
+}
+
+const signOut = () => {
+  userStore.logOut
 }
 
 </script>

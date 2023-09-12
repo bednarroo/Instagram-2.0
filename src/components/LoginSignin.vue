@@ -50,7 +50,7 @@
 <script setup lang="ts">
 import {ref, computed} from 'vue'
 import {supabase} from '../dataBase/index'
-import {useCounterStore} from '../stores/userDetails.ts'
+import {useUserStore} from '../stores/userDetails.ts'
 
 const showSigninOption = ref(true)
 const errorLogInSignIn = ref<object>({})
@@ -60,7 +60,7 @@ const loginSigninDetial = ref({
   password: ""
 })
 
-const storeUserDetails = useCounterStore()
+const storeUserDetails = useUserStore()
 
 const changeOptionAuth = (option: string) => {
   if(option === 'Login' ) {
