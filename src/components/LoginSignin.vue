@@ -77,7 +77,20 @@ const showTitle = computed( () => {
 const handleLogInSignIn = async () =>  {
   // Registration
   if (showSigninOption.value === true){
-    const { data, error } = await supabase.auth.signUp({
+
+  // Check if user exists
+  const { data: dataUsers, error: errorUsers} = await supabase.from('users')
+    .select('*')
+    .eq('login', loginSigninDetial.value.login)
+
+  console.log(dataUsers, errorUsers)
+
+  if(dataUsers.length > 0){
+    return errorLogInSignIn.value = errorUsers
+  } 
+  // Add user to Auth
+
+    const { data: dataSignUp, error } = await supabase.auth.signUp({
     email: loginSigninDetial.value.email,
     password: loginSigninDetial.value.password
 })
@@ -85,30 +98,30 @@ const handleLogInSignIn = async () =>  {
     errorLogInSignIn.value = error
     return
   }
-  if(data){
+  if(dataSignUp){
      // add user to users table
-     console.log(data)
-    const error = await supabase
+    console.log(dataSignUp)
+    const {error: errorAddUser} = await supabase
       .from('users')
-      .insert({name: loginSigninDetial.value.login, user_id: data.user.id, email: loginSigninDetial.value.email})
-      if (error){
+      .insert({login: loginSigninDetial.value.login, user_id: dataSignUp.user.id, email: loginSigninDetial.value.email})
+      if (errorAddUser){
         errorLogInSignIn.value = error; 
-        return
+        // return
     }
     // set up storage
-    // storeUserDetails.logIn(data.user)
+    storeUserDetails.logIn(data.user)
    
   }
   return
 }
 // log in
   else{
-  const { data, error } = await supabase.auth.signInWithPassword({
+  const { data: dataLogin, error: errorLogiIn } = await supabase.auth.signInWithPassword({
   email: loginSigninDetial.value.email,
   password: loginSigninDetial.value.password
   })
-  if(data){
-    console.log(data)
+  if(dataLogin){
+    console.log(dataLogin, errorLogiIn)
   }
   return
   }
