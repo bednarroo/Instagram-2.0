@@ -2,16 +2,18 @@ import { defineStore } from 'pinia'
 
 export const useCounterStore = defineStore('userDetails', {
   state: () => ({
-    userDetails: null
-    //  {
-    //   id: null,
-    //   login: null,
-    //   email: null,
-    // },
+    userDetails: {
+      id: null,
+      login: null,
+      email: null,
+    },
   }),
   actions: {
-    logIn(logIn) {
-      this.userDetails = logIn
+    logIn(dataSignUp, dataLogIn) {
+      this.userDetails = {
+        id: dataSignUp.user.id,
+        email: dataSignUp.user.email,
+        login: dataLogIn}
     },
   //   // logOut() {
   //   //   this.count++

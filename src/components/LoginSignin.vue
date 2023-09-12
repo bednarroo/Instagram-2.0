@@ -100,17 +100,15 @@ const handleLogInSignIn = async () =>  {
   }
   if(dataSignUp){
      // add user to users table
-    console.log(dataSignUp)
     const {error: errorAddUser} = await supabase
       .from('users')
       .insert({login: loginSigninDetial.value.login, user_id: dataSignUp.user.id, email: loginSigninDetial.value.email})
       if (errorAddUser){
         errorLogInSignIn.value = error; 
-        // return
+        return
     }
     // set up storage
-    storeUserDetails.logIn(data.user)
-   
+    storeUserDetails.logIn(dataSignUp, loginSigninDetial.value.login)
   }
   return
 }
