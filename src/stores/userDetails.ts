@@ -17,4 +17,4 @@ export const useCounterStore = defineStore('userDetails', {
   //   //   this.count++
   //   // }
   // },
-})
+}})
