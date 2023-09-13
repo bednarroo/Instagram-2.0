@@ -48,7 +48,7 @@ import {supabase} from '../dataBase/index'
 import {useUserStore} from '../stores/userDetails.ts'
 
 const showSigninOption = ref(true)
-const errorLogInSignIn = ref<object>({})
+const errorLogInSignIn = ref<string>('')
 const loginSigninDetial = ref({
   email: "",
   password: ""
