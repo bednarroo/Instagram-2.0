@@ -5,12 +5,12 @@
 </button>
 
 <!-- Modal -->
-<div :class="loginSignInclasses" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">{{ showTitle }}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" ref="closeSignInbutton" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="d-flex px-5 justify-content-center"  role="group" aria-label="Basic example">
@@ -43,7 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import {ref, computed} from 'vue'
+import {ref, computed, onMounted} from 'vue'
 import {supabase} from '../dataBase/index'
 import {useUserStore} from '../stores/userDetails.ts'
 
@@ -53,7 +53,7 @@ const loginSigninDetial = ref({
   email: "",
   password: ""
 })
-const loginSignInclasses = ref('modal fade')
+const closeSignInbutton = ref('')
 
 const storeUserDetails = useUserStore()
 
@@ -100,8 +100,9 @@ const handleLogInSignIn = async () =>  {
     email: loginSigninDetial.value.email,
     password: loginSigninDetial.value.password
   })
-  if(dataLogIn){
-    return loginSignInclasses.value = 'modal fade'
+  if(dataLogIn.user){
+    storeUserDetails.logIn(dataLogIn)
+    return closeSignInbutton.value.click()
   }
   if(errorLogiIn){
     console.log(errorLogiIn)
@@ -109,6 +110,7 @@ const handleLogInSignIn = async () =>  {
   }
   }
 }
+
 
 </script>
 
