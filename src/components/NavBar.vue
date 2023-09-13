@@ -48,7 +48,6 @@ const collapseNav = ref<any>(false)
 
 const showMenu = () => {
     collapseNav.value  = !collapseNav.value
-    console.log(collapseNav.value)
 }
 
 const logOut = () => {

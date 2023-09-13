@@ -5,7 +5,7 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div :class="loginSignInclasses" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -53,6 +53,7 @@ const loginSigninDetial = ref({
   email: "",
   password: ""
 })
+const loginSignInclasses = ref('modal fade')
 
 const storeUserDetails = useUserStore()
 
@@ -99,7 +100,11 @@ const handleLogInSignIn = async () =>  {
     email: loginSigninDetial.value.email,
     password: loginSigninDetial.value.password
   })
+  if(dataLogIn){
+    return loginSignInclasses.value = 'modal fade'
+  }
   if(errorLogiIn){
+    console.log(errorLogiIn)
     errorLogInSignIn.value = errorLogiIn
   }
   }
