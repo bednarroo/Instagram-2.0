@@ -99,8 +99,8 @@ const handleLogInSignIn = async () =>  {
     email: loginSigninDetial.value.email,
     password: loginSigninDetial.value.password
   })
-  if(dataLogIn) {
-    
+  if(errorLogiIn){
+    errorLogInSignIn.value = errorLogiIn
   }
   }
 }
