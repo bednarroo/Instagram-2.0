@@ -28,7 +28,7 @@
 
     <div class="d-flex align-items-center mx-3">
       <LoginSignin />
-      <button @click="signOut" type="button" class="btn btn-primary">Sign out</button>
+      <button @click="logOut" type="button" class="btn btn-primary">Sign out</button>
     </div>
 
 
@@ -51,8 +51,9 @@ const showMenu = () => {
     console.log(collapseNav.value)
 }
 
-const signOut = () => {
-  userStore.logOut
+const logOut = () => {
+  userStore.logOut()
+  console.log("logout")
 }
 
 </script>

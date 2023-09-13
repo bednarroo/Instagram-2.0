@@ -24,11 +24,6 @@
               <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="loginSigninDetial.email">
               <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
             </div>
-            <div class="mb-3" v-if="showSigninOption">
-              <label for="login" class="form-label" >Login</label>
-              <input type="email" class="form-control" id="login" aria-describedby="loginHelp" v-model="loginSigninDetial.login">
-              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
-            </div>
             <div class="mb-3" >
               <label for="password" class="form-label" >Password</label>
               <input type="password" class="form-control" id="password" v-model="loginSigninDetial.password">
@@ -55,7 +50,6 @@ import {useUserStore} from '../stores/userDetails.ts'
 const showSigninOption = ref(true)
 const errorLogInSignIn = ref<object>({})
 const loginSigninDetial = ref({
-  login: "",
   email: "",
   password: ""
 })
@@ -77,18 +71,8 @@ const showTitle = computed( () => {
 const handleLogInSignIn = async () =>  {
   // Registration
   if (showSigninOption.value === true){
-
-  // Check if user exists
-  const { data: dataUsers, error: errorUsers} = await supabase.from('users')
-    .select('*')
-    .eq('login', loginSigninDetial.value.login)
-
-  console.log(dataUsers, errorUsers)
-
-  if(dataUsers.length > 0){
-    return errorLogInSignIn.value = errorUsers
-  } 
-  // Add user to Auth
+  
+    // Add user to Auth
 
     const { data: dataSignUp, error } = await supabase.auth.signUp({
     email: loginSigninDetial.value.email,
@@ -104,9 +88,14 @@ const handleLogInSignIn = async () =>  {
       .from('users')
       .insert({login: loginSigninDetial.value.login, user_id: dataSignUp.user.id, email: loginSigninDetial.value.email})
       if (errorAddUser){
-        errorLogInSignIn.value = error; 
+        errorLogInSignIn.value = errorAddUser; 
         return
     }
+    // log in user when Sign Up
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: loginSigninDetial.value.email,
+      password: loginSigninDetial.value.password
+    })
     // set up storage
     storeUserDetails.logIn(dataSignUp, loginSigninDetial.value.login)
   }
@@ -119,7 +108,11 @@ const handleLogInSignIn = async () =>  {
   password: loginSigninDetial.value.password
   })
   if(dataLogin){
-    console.log(dataLogin, errorLogiIn)
+    const data = await supabase.auth.getUser()
+    console.log(data)
+
+
+
   }
   return
   }
