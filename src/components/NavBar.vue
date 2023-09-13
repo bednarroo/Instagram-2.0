@@ -27,8 +27,8 @@
     </div>
 
     <div class="d-flex align-items-center mx-3">
-      <LoginSignin />
-      <button @click="logOut" type="button" class="btn btn-primary">Sign out</button>
+      <LoginSignin v-if="!userStore.userDetails.email" />
+      <button v-else @click="logOut" type="button" class="btn btn-primary">Sign out</button>
     </div>
 
 
