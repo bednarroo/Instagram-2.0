@@ -9,7 +9,7 @@ export const useUserStore = defineStore('userDetails', {
     },
   }),
   actions: {
-    logIn(dataLogIn) {
+    logIn(dataLogIn:any) {
       this.userDetails = {
         id: dataLogIn.user.id,
         email: dataLogIn.user.email,
