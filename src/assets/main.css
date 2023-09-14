@@ -1,2 +1,4 @@
-@import './base.css';
-
+*{
+    font-family: 'Lora Variable', sans-serif;
+    color: red;
+  }

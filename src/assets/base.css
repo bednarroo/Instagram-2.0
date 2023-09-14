@@ -1,1 +1,6 @@
+use '@fontsource-variable/lora/wght-italic.css';
 
+body, p, h1, h2 {
+    font-family: 'Lora Variable', sans-serif;
+    color: red;
+  }
