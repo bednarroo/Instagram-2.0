@@ -21,7 +21,6 @@
 
     <div class="collapse navbar-collapse" :class="collapseNav === true ?  'show' : '' " id="navbarNavAltMarkup">
      <div class="navbar-nav">
-       <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
        <a class="nav-item nav-link" href="#">About</a>
        <LoginSignin v-if="!userStore.userDetails.email" />
       <button v-else @click="logOut" type="button" class="btn btn-primary">Sign out</button>
