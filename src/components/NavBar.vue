@@ -1,8 +1,8 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-between">
 
-    <div>
-      <div class="d-flex my-auto">
+    <div class="d-flex flex-grow-1">
+      <div class="d-flex my-auto flex-grow-1">
         <div>
           <a class="d-flex fw-bolder text-decoration-none" href="/">
             <img class="mx-3 my-auto" src="../assets/Instagram.webp" alt="Instagram" height="34">
@@ -12,14 +12,14 @@
     </div>
     </div>
 
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-center ">
         <SearchProfile/>
         <button @click="showMenu" class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 
-    <div class="collapse navbar-collapse" :class="collapseNav === true ?  'show' : '' " id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse flex-grow-0 mx-4" :class="collapseNav === true ?  'show' : '' " id="navbarNavAltMarkup">
      <div class="navbar-nav">
        <a class="nav-item nav-link" href="#">About</a>
        <LoginSignin v-if="!userStore.userDetails.email" />
