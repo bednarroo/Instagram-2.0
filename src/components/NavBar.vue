@@ -4,10 +4,10 @@
     <div class="d-flex flex-grow-1">
       <div class="d-flex my-auto flex-grow-1">
         <div>
-          <a class="d-flex fw-bolder text-decoration-none" href="/">
+          <router-link class="d-flex fw-bolder text-decoration-none" to="/">
             <img class="mx-3 my-auto" src="../assets/Instagram.webp" alt="Instagram" height="34">
             <h1 class=" fw-bolder my-auto">Instagram</h1>
-          </a>
+          </router-link>
         </div>
     </div>
     </div>
@@ -21,7 +21,7 @@
 
     <div class="collapse navbar-collapse flex-grow-0 mx-4" :class="collapseNav === true ?  'show' : '' " id="navbarNavAltMarkup">
      <div class="navbar-nav">
-       <a class="nav-item nav-link" href="#">About</a>
+       <router-link class="nav-item nav-link" to="/about">About</router-link>
        <LoginSignin v-if="!userStore.userDetails.email" />
       <button v-else @click="logOut" type="button" class="btn btn-primary">Sign out</button>
     </div>
