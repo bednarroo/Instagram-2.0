@@ -2,13 +2,13 @@
   <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-between">
 
     <div>
-      <div class="d-flex">
-        <a class="navbar-brand" href="#">
-        <div class="d-flex">
-            <img class="mx-3" src="../assets/Instagram.webp" alt="Instagram" height="34">
-            <h2 class="mx-1">Instagram</h2>
+      <div class="d-flex my-auto">
+        <div>
+          <a class="d-flex fw-bolder text-decoration-none" href="/">
+            <img class="mx-3 my-auto" src="../assets/Instagram.webp" alt="Instagram" height="34">
+            <h1 class=" fw-bolder my-auto">Instagram</h1>
+          </a>
         </div>
-    </a>
     </div>
     </div>
 
