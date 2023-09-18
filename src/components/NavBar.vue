@@ -1,25 +1,25 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-between">
 
-    <div class="d-flex flex-grow-1">
+    <div class="d-flex flex-grow-1 mx-md-5">
       <div class="d-flex my-auto flex-grow-1">
         <div>
           <router-link class="d-flex fw-bolder text-decoration-none" to="/">
             <img class="mx-3 my-auto" src="../assets/Instagram.webp" alt="Instagram" height="34">
-            <h1 class=" fw-bolder my-auto">Instagram</h1>
+            <h1 class=" fw-bolder my-auto h3">Instagram</h1>
           </router-link>
         </div>
     </div>
     </div>
 
-    <div class="d-flex align-items-center ">
+    <div class="d-flex align-items-center  ">
         <SearchProfile/>
-        <button @click="showMenu" class="navbar-toggler mx-4" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button @click="showMenu" class="navbar-toggler mx-1" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
     </div>
 
-    <div class="collapse navbar-collapse flex-grow-0 mx-4" :class="collapseNav === true ?  'show' : '' " id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse flex-grow-0 mx-md-5" :class="collapseNav === true ?  'show' : '' " id="navbarNavAltMarkup">
      <div class="navbar-nav">
        <router-link class="nav-item nav-link" to="/about">About</router-link>
        <LoginSignin v-if="!userStore.userDetails.email" />
