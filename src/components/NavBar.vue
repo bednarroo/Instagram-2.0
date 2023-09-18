@@ -23,14 +23,10 @@
      <div class="navbar-nav">
        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
        <a class="nav-item nav-link" href="#">About</a>
-    </div>
-    </div>
-
-    <div class="d-flex align-items-center mx-3">
-      <LoginSignin v-if="!userStore.userDetails.email" />
+       <LoginSignin v-if="!userStore.userDetails.email" />
       <button v-else @click="logOut" type="button" class="btn btn-primary">Sign out</button>
     </div>
-
+    </div>
 
   </nav>
 </template>
