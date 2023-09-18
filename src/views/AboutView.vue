@@ -3,7 +3,6 @@
     
     <h1>This is app created by Sebastian Wuczkowski</h1>
     <p>If you would like to contact me please reach out to me by Linkedin</p>
-    <p>This website is based on:</p>
     <div id="carouselExampleDark" class="carousel carousel-dark slide">
 
     <h2>Technologies used in project:</h2>
