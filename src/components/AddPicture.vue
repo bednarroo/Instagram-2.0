@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="btn addButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  <button type="button" class="btn addButton fw-bolder" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
    Add picture!
   </button>
 
