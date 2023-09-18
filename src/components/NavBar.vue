@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-between">
+  <nav class="navbar navbar-expand-md navbar-light bg-light justify-content-between mb-1 border-bottom">
 
     <div class="d-flex flex-grow-1 mx-md-5">
       <div class="d-flex my-auto flex-grow-1">
