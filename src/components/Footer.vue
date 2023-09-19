@@ -6,12 +6,12 @@
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
       <li class="ms-3">
-        <a class="text-muted" href="#">
+        <a class="text-muted" href="https://github.com/bednarroo">
             <img src="../assets/Github.png" height="40px" alt="">
         </a>
       </li>
       <li class="ms-3">
-        <a class="text-muted" href="#">
+        <a class="text-muted" href="https://www.linkedin.com/in/sebastianwuczkowski">
             <img src="../assets/Linkedin.webp" height="40px" alt="">
         </a>
       </li>
