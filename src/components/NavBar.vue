@@ -35,9 +35,12 @@ import SearchProfile from './SearchProfile.vue'
 import LoginSignin from './LoginSignin.vue'
 import {ref} from 'vue'
 import {useUserStore} from '../stores/userDetails.ts'
+import { storeToRefs } from 'pinia';
 
 
 const userStore = useUserStore()
+
+const { userDetails } = storeToRefs(userStore)
 
 const collapseNav = ref<any>(false)
 
