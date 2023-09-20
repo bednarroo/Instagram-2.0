@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia'
 import {supabase} from '../dataBase/index.js'
+import {ref} from 'vue'
 
 export const useUserStore = defineStore('userDetails', {
   state: () => ({
-    loading: false,
+    loading: ref(false),
     userDetails: {
       id: null,
       email: null
@@ -12,6 +13,7 @@ export const useUserStore = defineStore('userDetails', {
   actions: {
     changeLoading() {
       this.loading = !this.loading
+      console.log(this.loading)
     },
     logIn(dataLogIn:any) {
       this.userDetails = {
@@ -30,6 +32,7 @@ export const useUserStore = defineStore('userDetails', {
         id: null,
         email: null,
       }
+      this.changeLoading()
     }
   }
 })

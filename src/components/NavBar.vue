@@ -47,6 +47,7 @@ const showMenu = () => {
 
 const logOut = () => {
   userStore.logOut()
+  userStore.changeLoading()
   console.log("logout")
 }
 
