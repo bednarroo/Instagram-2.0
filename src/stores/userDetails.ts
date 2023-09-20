@@ -3,12 +3,16 @@ import {supabase} from '../dataBase/index.js'
 
 export const useUserStore = defineStore('userDetails', {
   state: () => ({
+    loading: false,
     userDetails: {
       id: null,
       email: null
     },
   }),
   actions: {
+    changeLoading() {
+      this.loading = !this.loading
+    },
     logIn(dataLogIn:any) {
       this.userDetails = {
         id: dataLogIn.user.id,
