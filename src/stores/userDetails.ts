@@ -22,11 +22,13 @@ export const useUserStore = defineStore('userDetails', {
       }
     },
     async checkIfLoggedWhenAppRun(){
+      console.log(this.changeLoading);
       this.changeLoading()
       const {data} = await supabase.auth.getUser()
         this.userDetails.id = data.user.id 
         this.userDetails.email = data.user.email 
       this.changeLoading()
+      console.log(this.changeLoading);
     },
     async logOut() {
       const { error } = await supabase.auth.signOut()
