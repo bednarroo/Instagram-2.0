@@ -12,7 +12,7 @@
       </li>
       <li class="ms-3">
         <a class="text-muted" href="https://www.linkedin.com/in/sebastianwuczkowski">
-            <img src="../assets/Linkedin.webp" height="40px" alt="">
+            <img src="../assets/LinkedIn.webp" height="40px" alt="">
         </a>
       </li>
     
