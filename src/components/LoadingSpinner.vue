@@ -11,9 +11,6 @@
 import {useUserStore} from '../stores/userDetails.ts'
 const userStore = useUserStore()
 
-
-console.log(userStore.loading)
-
 </script>
 
 <style>
