@@ -12,6 +12,7 @@ export const useUserStore = defineStore('userDetails', {
   }),
   actions: {
     changeLoading() {
+      console.log(this.loading)
       this.loading = !this.loading
     },
     logIn(dataLogIn:{ idSignUp: string, emailSignUp: string }) {
