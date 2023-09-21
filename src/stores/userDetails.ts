@@ -25,7 +25,7 @@ export const useUserStore = defineStore('userDetails', {
       this.changeLoading()
       const {data: dataAppRun} = await supabase.auth.getUser()
       console.log(dataAppRun)
-      if (dataAppRun){
+      if (dataAppRun.user !== null){
         this.userDetails.id = dataAppRun.user.id 
         this.userDetails.email = dataAppRun.user.email 
       }
