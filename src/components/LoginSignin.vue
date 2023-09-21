@@ -70,7 +70,9 @@ const showTitle = computed( () => {
 })
 
 const handleLogInSignIn = async () =>  {
+
   storeUserDetails.changeLoading()
+
   // Registration
   if (showSigninOption.value === true){
   
@@ -81,15 +83,17 @@ const handleLogInSignIn = async () =>  {
     password: loginSigninDetial.value.password
 })
   if(singUpError){
+    console.log(singUpError)
     errorLogInSignIn.value = singUpError.message
-    return  storeUserDetails.changeLoading()
   }
   if(dataSignUp){
+    
     const {id: idSignUp, email: emailSignUp} = dataSignUp.user
     // set up storage
     storeUserDetails.logIn({idSignUp, emailSignUp})
+    closeSignInbutton.value.click()
   }
-  return storeUserDetails.changeLoading()
+    return storeUserDetails.changeLoading()
 }
 // log in
   else{
