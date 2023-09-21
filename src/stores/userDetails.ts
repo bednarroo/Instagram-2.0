@@ -13,18 +13,19 @@ export const useUserStore = defineStore('userDetails', {
   actions: {
     changeLoading() {
       this.loading = !this.loading
-      console.log(this.loading)
     },
-    logIn(dataLogIn:any) {
+    logIn(dataLogIn:{ idSignUp: string, emailSignUp: string }) {
       this.userDetails = {
-        id: dataLogIn.user.id,
-        email: dataLogIn.user.email,
+        id: dataLogIn.idSignUp,
+        email: dataLogIn.emailSignUp,
       }
     },
     async checkIfLoggedWhenAppRun(){
+      this.changeLoading()
       const {data} = await supabase.auth.getUser()
         this.userDetails.id = data.user.id 
         this.userDetails.email = data.user.email 
+      this.changeLoading()
     },
     async logOut() {
       const { error } = await supabase.auth.signOut()
