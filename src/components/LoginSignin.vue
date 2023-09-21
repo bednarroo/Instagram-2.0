@@ -70,29 +70,26 @@ const showTitle = computed( () => {
 })
 
 const handleLogInSignIn = async () =>  {
+  storeUserDetails.changeLoading()
   // Registration
   if (showSigninOption.value === true){
   
-    // Add user to Auth
+    //Sign Up user
 
-    const { data: dataSignUp, error } = await supabase.auth.signUp({
+    const { data: dataSignUp, error: singUpError } = await supabase.auth.signUp({
     email: loginSigninDetial.value.email,
     password: loginSigninDetial.value.password
 })
-  if(error){
-    errorLogInSignIn.value = error
-    return
+  if(singUpError){
+    errorLogInSignIn.value = singUpError.message
+    return  storeUserDetails.changeLoading()
   }
   if(dataSignUp){
-    // log in user when Sign Up
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: loginSigninDetial.value.email,
-      password: loginSigninDetial.value.password
-    })
+    const {id: idSignUp, email: emailSignUp} = dataSignUp.user
     // set up storage
-    storeUserDetails.logIn(dataSignUp)
+    storeUserDetails.logIn({idSignUp, emailSignUp})
   }
-  return
+  return storeUserDetails.changeLoading()
 }
 // log in
   else{
@@ -102,11 +99,12 @@ const handleLogInSignIn = async () =>  {
   })
   if(dataLogIn.user){
     storeUserDetails.logIn(dataLogIn)
-    return closeSignInbutton.value.click()
+    closeSignInbutton.value.click()
+    return  storeUserDetails.changeLoading()
   }
   if(errorLogiIn){
-    console.log(errorLogiIn)
-    errorLogInSignIn.value = errorLogiIn
+    errorLogInSignIn.value = errorLogiIn.message
+    return storeUserDetails.changeLoading()
   }
   }
 }
