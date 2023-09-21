@@ -83,14 +83,15 @@ const handleLogInSignIn = async () =>  {
     password: loginSigninDetial.value.password
 })
   if(singUpError){
-    console.log(singUpError)
+    console.log(singUpError, 'datasignuperror')
     errorLogInSignIn.value = singUpError.message
   }
   if(dataSignUp){
     
-    const {id: idSignUp, email: emailSignUp} = dataSignUp.user
     // set up storage
-    storeUserDetails.logIn({idSignUp, emailSignUp})
+    console.log(dataSignUp, 'dataSignUp')
+    storeUserDetails.logIn(dataSignUp.user.id,  dataSignUp.user.email)
+    console.log(dataSignUp.user)
     closeSignInbutton.value.click()
   }
     return storeUserDetails.changeLoading()
@@ -102,7 +103,7 @@ const handleLogInSignIn = async () =>  {
     password: loginSigninDetial.value.password
   })
   if(dataLogIn.user){
-    storeUserDetails.logIn(dataLogIn)
+    storeUserDetails.logIn( dataLogIn.user.id, dataLogIn.user.email )
     closeSignInbutton.value.click()
     return  storeUserDetails.changeLoading()
   }

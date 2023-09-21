@@ -15,10 +15,10 @@ export const useUserStore = defineStore('userDetails', {
       console.log(this.loading)
       this.loading = !this.loading
     },
-    logIn(dataLogIn:{ idSignUp: string, emailSignUp: string }) {
+    logIn(id, email) {
       this.userDetails = {
-        id: dataLogIn.idSignUp,
-        email: dataLogIn.emailSignUp,
+        id,
+        email
       }
     },
     async checkIfLoggedWhenAppRun(){
