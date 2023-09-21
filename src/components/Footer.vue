@@ -6,7 +6,7 @@
 
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
       <li class="ms-3">
-        <a class="text-muted" href="https://github.com/bednarroo">
+        <a class="text-muted" href="https://github.com/bednarroo"> 
             <!-- <img src="@/assets/GitHub.png" height="40px" alt=""> -->
         </a>
       </li>
