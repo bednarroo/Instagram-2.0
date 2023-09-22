@@ -1,8 +1,12 @@
 <template>
-<!-- Button trigger modal -->
-<button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
-  <img src="../assets/search.svg" alt="" style="width: 25px;">
-</button>
+  <div>
+    <!-- Button trigger modal -->
+    
+    <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
+      
+      <img src="../assets/search.svg" alt="" style="width: 15px; margin-right: 10px;" >
+      <span>Search </span>
+    </button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -14,8 +18,8 @@
       </div>
       <div class="modal-body">
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Username</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+          <label for="exampleFormControlInput1" class="form-label">Username</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
         </div>
       </div>
       <div class="modal-footer">
@@ -23,6 +27,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 </template>
 
