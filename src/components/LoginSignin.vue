@@ -13,8 +13,12 @@
         <button type="button" ref="closeSignInbutton" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="d-flex px-5 justify-content-center"  role="group" aria-label="Basic example">
+        <div class="alert alert-primary" role="alert">
+ Choose one option
+        </div>
+        <div class="d-flex p-3 justify-content-center"  role="group" aria-label="Basic example">
           <button type="button" @click="changeOptionAuth('Login')" class="btn mx-3" :class="showSigninOption === true ? 'btn-primary' : 'btn-secondary'" >Sign in</button>
+          <span class=" d-flex justify-content-around align-items-center"> or </span>
           <button type="button" @click="changeOptionAuth('Signin')" class="btn mx-3" :class="showSigninOption === true ? 'btn-secondary' : 'btn-primary' " >Log in</button>
         </div>
         <div>
@@ -28,14 +32,17 @@
               <label for="password" class="form-label" >Password</label>
               <input type="password" class="form-control" id="password" v-model="loginSigninDetial.password">
             </div>
-            <div class="d-flex flex-end justify-content-end">
+            <div class="d-flex flex-column-reverse">
+              <span v-if="errorLogInSignIn" class="text-danger">
+            {{ errorLogInSignIn }}
+          </span>
               <button @click="handleLogInSignIn" type="button" class="btn btn-primary">{{showTitle}}</button>
             </div>
           </form>
         </div>
-        <div v-if="errorLogInSignIn">
-          {{ errorLogInSignIn }}
-        </div>
+        <!-- <div v-if="errorLogInSignIn">
+          
+        </div> -->
       </div>
     </div>
   </div>
