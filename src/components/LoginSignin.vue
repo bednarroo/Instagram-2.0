@@ -14,7 +14,7 @@
       </div>
       <div class="modal-body">
         <div class="alert alert-primary" role="alert">
- Choose one option
+          Choose one option
         </div>
         <div class="d-flex p-3 justify-content-center"  role="group" aria-label="Basic example">
           <button type="button" @click="changeOptionAuth('Login')" class="btn mx-3" :class="showSigninOption === true ? 'btn-primary' : 'btn-secondary'" >Sign in</button>
