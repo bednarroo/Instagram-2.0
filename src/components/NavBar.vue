@@ -21,8 +21,7 @@
     <div class="collapse navbar-collapse flex-grow-0 mx-md-5" :class="collapseNav === true ?  'show' : '' " id="navbarNavAltMarkup">
      <div class="navbar-nav">
       <button type="button" class="btn btn-outline-primary m-1"><SearchProfile/></button>
-      <button type="button" class="btn btn-outline-primary m-1"><router-link class="nav-item nav-link" to="/about"><img src="../assets/about.png" style="height: 
-       20px; margin-right: 5px;" alt=""> About</router-link></button>
+      <button type="button" class="btn btn-outline-primary m-1"><router-link class="nav-item nav-link" to="/about"><img src="../assets/about.png" style="height: 20px; margin-right: 5px;" alt=""> About</router-link></button>
       <button type="button" class="btn btn-outline-primary m-1"><router-link class="nav-item nav-link" to="/about">  <img src="../assets/person.svg" alt="" style=" margin-right: 5px;" > My account</router-link></button>
        
        

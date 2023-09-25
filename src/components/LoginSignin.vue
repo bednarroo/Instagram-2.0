@@ -26,7 +26,6 @@
             <div class="mb-3">
               <label for="email" class="form-label">Email address</label>
               <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="loginSigninDetial.email">
-              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
             </div>
             <div class="mb-3" >
               <label for="password" class="form-label" >Password</label>
@@ -36,7 +35,14 @@
               <span v-if="errorLogInSignIn" class="text-danger">
             {{ errorLogInSignIn }}
           </span>
-              <button @click="handleLogInSignIn" type="button" class="btn btn-primary">{{showTitle}}</button>
+              <button
+               @click="handleLogInWtihGoogle"
+              type="button" 
+              class="btn btn-dark my-2 d-flex justify-content-center "> 
+              <img class="mx-3" style = 'width: 25px' src="../assets/logInWithGoogle.png">
+                {{showTitle}} with Google
+              </button>
+              <button @click="handleLogInSignIn" type="button" class="btn btn-primary">{{showTitle}} with password</button>
             </div>
           </form>
         </div>
@@ -75,6 +81,19 @@ const changeOptionAuth = (option: string) => {
 const showTitle = computed( () => {
   return showSigninOption.value  === true ? "Sign in" : "Log in"
 })
+
+const handleLogInWtihGoogle = async () => {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+  provider: 'google',
+  options: {
+    queryParams: {
+      access_type: 'offline',
+      prompt: 'consent',
+    },
+  },
+})
+console.log(data, error)
+}
 
 const handleLogInSignIn = async () =>  {
 
