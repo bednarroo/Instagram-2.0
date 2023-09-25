@@ -5,7 +5,7 @@
     <button type="button" class="btn " data-bs-toggle="modal" data-bs-target="#exampleModal">
       
       <img src="../assets/search.svg" alt="" style="width: 15px; margin-right: 10px;" >
-      <span>Search </span>
+      <span style="font-size: 18px;"> Search </span>
     </button>
 
 <!-- Modal -->
