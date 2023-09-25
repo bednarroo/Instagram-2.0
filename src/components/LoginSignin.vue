@@ -1,6 +1,6 @@
 <template>
   <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary p-2 m-sml-3" data-bs-toggle="modal" data-bs-target="#loginModal">
+<button type="button" class="btn btn-primary p-2 m-sml-3 m-1 " data-bs-toggle="modal" data-bs-target="#loginModal">
   Log in
 </button>
 
