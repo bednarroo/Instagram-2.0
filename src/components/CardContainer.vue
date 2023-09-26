@@ -1,6 +1,6 @@
 <template>
   <div class="container-xxl d-flex flex-wrap mt-4 justify-content-evenly">
-    <SingleCard />
+    <SingleCard v-for="post in posts" />
     <SingleCard />
     <SingleCard />
     <SingleCard />
@@ -12,7 +12,12 @@
 </template>
 
 <script lang="ts" setup>
-import SingleCard from "./SingleCard.vue";
+import SingleCard from "./SingleCard.vue"
+import {supabase} from '../dataBase/index.js'
+
+const {data: posts, error} = await supabase
+  .from('post')
+  .select()
 
 </script>
 
