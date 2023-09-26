@@ -4,11 +4,15 @@
     <div class="card-body">
       <h4 class="card-title">Card title</h4>
       <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      <p class="card-text">
-        <small class="text-muted">
-          Added by: Sebastian
+      <p class="card-text my-1">
+        <small>
+          <b> Added by:</b> Sebastian
           <img style="width: 20px;" src="../assets/Instagram.webp" class="card-img-top" alt="...">
+        </small>
+      </p>
+      <p class="card-text my-1">
+        <small >
+         <b>Last updated</b>: 3 mins ago
         </small>
       </p>
     </div>
