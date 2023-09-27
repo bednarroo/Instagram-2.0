@@ -1,20 +1,18 @@
 <template>
 <div class="card">
-    <img src="../assets/Instagram.webp" class="card-img-top" alt="...">
+    <img :src="props?.details?.picture_url" class="card-img-top" alt="...">
     <div class="card-body">
-      <h4 class="card-title">Card title</h4>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <h4 class="card-title">{{props?.details?.title}}</h4>
+      <p class="card-text">{{props?.details?.description}}</p>
       <p class="card-text my-1">
         <small>
-          <b> Added by:</b> Sebastian
-          <img style="width: 20px;" src="../assets/Instagram.webp" class="card-img-top" alt="...">
+          <b> Added by:</b> {{props?.details?.user_id}}
+          <img style="width: 20px;" :src="props?.details?.picture_url" class="card-img-top" alt="...">
         </small>
       </p>
       <p class="card-text my-1">
         <small >
-         <b>Last updated</b>: {{props.details}}
-         {{ details }}
-         {{ props.createdAt }}
+         <b>Last updated</b>: {{ props?.details.created_at }}
         </small>
       </p>
     </div>
@@ -27,7 +25,6 @@ import { onMounted } from "vue"
 
 const props = defineProps({
   details: Array,
-  createdAt: String,
 })
 
 onMounted(()=>{

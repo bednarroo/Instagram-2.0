@@ -1,7 +1,6 @@
 <template>
   <div class="container-xxl d-flex flex-wrap mt-4 justify-content-evenly">
     <SingleCard v-for="post in posts" :key="post.id" :details="post" />
-    <SingleCard />
   </div>  
 </template>
 
@@ -18,7 +17,6 @@ onMounted(  async ()  => {
   .from('post')
   .select()
   posts.value = data
-  console.log(posts.value)
 })
 
 </script>
