@@ -12,7 +12,7 @@
       </p>
       <p class="card-text my-1">
         <small >
-         <b>Last updated</b>: {{ props?.details.created_at }}
+         <b>Last updated</b>: {{ props?.details.created_at.slice(0,10) }}
         </small>
       </p>
     </div>
