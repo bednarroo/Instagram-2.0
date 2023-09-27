@@ -1,6 +1,6 @@
 <template>
 <div class="card">
-    <img :src="props?.details?.picture_url" class="card-img-top" alt="...">
+    <img :src="props?.details?.picture_url" class="card-img-top"  alt="...">
     <div class="card-body">
       <h4 class="card-title">{{props?.details?.title}}</h4>
       <p class="card-text">{{props?.details?.description}}</p>
