@@ -12,7 +12,7 @@
       </p>
       <p class="card-text my-1">
         <small >
-         <b>Last updated</b>: 3 mins ago
+         <b>Last updated</b>: {{props.created_at}}
         </small>
       </p>
     </div>
@@ -20,6 +20,15 @@
 </template>
 
 <script lang="ts" setup>
+
+const props = defineProps({
+  created_at: String,
+  description: String,
+  id: String,
+  picture_url: String,
+  title: String,
+  user_id: String,
+})
 
 </script>
 
