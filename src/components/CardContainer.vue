@@ -1,6 +1,6 @@
 <template>
   <div class="container-xxl d-flex flex-wrap mt-4 justify-content-evenly">
-    <SingleCard v-for="post in posts" />
+    <SingleCard v-for="post in posts" :key="post.id" :props="post"  />
     <SingleCard />
     <SingleCard />
     <SingleCard />
@@ -18,6 +18,8 @@ import {supabase} from '../dataBase/index.js'
 const {data: posts, error} = await supabase
   .from('post')
   .select()
+
+console.log(posts)
 
 </script>
 
