@@ -12,7 +12,9 @@
       </p>
       <p class="card-text my-1">
         <small >
-         <b>Last updated</b>: {{props.created_at}}
+         <b>Last updated</b>: {{props.details}}
+         {{ details }}
+         {{ props.createdAt }}
         </small>
       </p>
     </div>
@@ -20,14 +22,16 @@
 </template>
 
 <script lang="ts" setup>
+import { onMounted } from "vue"
+
 
 const props = defineProps({
-  created_at: String,
-  description: String,
-  id: String,
-  picture_url: String,
-  title: String,
-  user_id: String,
+  details: Array,
+  createdAt: String,
+})
+
+onMounted(()=>{
+  console.log(props)
 })
 
 </script>

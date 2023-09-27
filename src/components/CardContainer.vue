@@ -1,12 +1,6 @@
 <template>
   <div class="container-xxl d-flex flex-wrap mt-4 justify-content-evenly">
-    <SingleCard v-for="post in posts" :key="post.id" :props="post"  />
-    <SingleCard />
-    <SingleCard />
-    <SingleCard />
-    <SingleCard />
-    <SingleCard />
-    <SingleCard />
+    <SingleCard v-for="post in posts" :key="post.id" :details="post" />
     <SingleCard />
   </div>  
 </template>
@@ -14,12 +8,18 @@
 <script lang="ts" setup>
 import SingleCard from "./SingleCard.vue"
 import {supabase} from '../dataBase/index.js'
+import { onMounted, ref } from "vue";
 
-const {data: posts, error} = await supabase
+
+const posts = ref([])
+
+onMounted(  async ()  => {
+  const {data, error} = await supabase
   .from('post')
   .select()
-
-console.log(posts)
+  posts.value = data
+  console.log(posts.value)
+})
 
 </script>
 
