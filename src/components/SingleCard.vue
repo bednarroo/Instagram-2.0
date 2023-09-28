@@ -10,12 +10,18 @@
             <b> 
               Added by: 
             </b>
-            <router-link class="nav-item nav-link" :to="showUrl">
+            <router-link class="nav-item nav-link" v-if="userStore.userDetails.email" :to=showUrl>
               <img style="width: 20px;" :src="props?.details?.picture_url" class="card-img-top" alt="...">
              <span>
               {{props?.details?.user_id}}
              </span>
-          </router-link>
+            </router-link>
+            <a class="nav-item nav-link" v-else >
+              <img style="width: 20px;" :src="props?.details?.picture_url" class="card-img-top" alt="...">
+             <span>
+              {{props?.details?.user_id}}
+             </span>
+            </a>
           </small>
           
       </p>
@@ -30,6 +36,9 @@
 
 <script lang="ts" setup>
 import { onMounted, computed } from "vue"
+import {useUserStore} from '../stores/userDetails.ts'
+
+const userStore = useUserStore()
 
 
 const props = defineProps({
@@ -37,7 +46,7 @@ const props = defineProps({
 })
 
 const showUrl = computed(() => {
-  return `/profile/${props?.details?.user_id}`
+    return `profile/${props?.details?.user_id}` 
 })
 
 </script>
