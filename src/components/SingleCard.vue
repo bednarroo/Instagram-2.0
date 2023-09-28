@@ -5,10 +5,19 @@
       <h4 class="card-title">{{props?.details?.title}}</h4>
       <p class="card-text">{{props?.details?.description}}</p>
       <p class="card-text my-1">
-        <small>
-          <b> Added by:</b> {{props?.details?.user_id}}
-          <img style="width: 20px;" :src="props?.details?.picture_url" class="card-img-top" alt="...">
-        </small>
+        
+          <small class="d-flex">
+            <b> 
+              Added by: 
+            </b>
+            <router-link class="nav-item nav-link" :to="showUrl">
+              <img style="width: 20px;" :src="props?.details?.picture_url" class="card-img-top" alt="...">
+             <span>
+              {{props?.details?.user_id}}
+             </span>
+          </router-link>
+          </small>
+          
       </p>
       <p class="card-text my-1">
         <small >
@@ -20,15 +29,15 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from "vue"
+import { onMounted, computed } from "vue"
 
 
 const props = defineProps({
   details: Array,
 })
 
-onMounted(()=>{
-  console.log(props)
+const showUrl = computed(() => {
+  return `/profile/${props?.details?.user_id}`
 })
 
 </script>
