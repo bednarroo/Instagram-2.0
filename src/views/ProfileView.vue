@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column">
     <AccountStats />
-    <button type="button" class="btn btn-primary fw-bolder">Follow</button>
+    <button type="button" class="btn fw-bolder btn-follow">Follow</button>
     <AddPicture />
     <CardContainer />
   </div>
@@ -13,3 +13,12 @@ import AddPicture from '../components/AddPicture.vue'
 import CardContainer from '../components/CardContainer.vue'
 
 </script>
+
+
+<style  scoped>
+
+.btn-follow{
+  background-color: rgba(253,1,176,255)
+}
+
+</style>
