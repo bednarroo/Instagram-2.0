@@ -1,6 +1,7 @@
 <template>
   <div class="d-flex flex-column">
     <AccountStats />
+    <button type="button" class="btn btn-primary fw-bolder">Follow</button>
     <AddPicture />
     <CardContainer />
   </div>
