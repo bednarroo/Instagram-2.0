@@ -104,6 +104,8 @@ const handleLogInSignIn = async () =>  {
     errorLogInSignIn.value = singUpError.message
   }
   if(dataSignUp){
+
+    // Create record in DB for user
     
     // set up storage
     console.log(dataSignUp, 'dataSignUp')
