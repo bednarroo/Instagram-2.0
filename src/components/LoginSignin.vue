@@ -46,9 +46,6 @@
             </div>
           </form>
         </div>
-        <div v-if="errorLogInSignIn">
-          {{  errorLogInSignIn}}
-        </div>
       </div>
     </div>
   </div>
