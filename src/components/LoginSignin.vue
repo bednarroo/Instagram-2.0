@@ -27,6 +27,10 @@
               <label for="email" class="form-label">Email address</label>
               <input type="email" class="form-control" id="email" aria-describedby="emailHelp" v-model="loginSigninDetial.email">
             </div>
+            <div class="mb-3" v-if="showSigninOption" >
+              <label for="login" class="form-label" >Login</label>
+              <input type="text" class="form-control" id="login" v-model="loginSigninDetial.login">
+            </div>
             <div class="mb-3" >
               <label for="password" class="form-label" >Password</label>
               <input type="password" class="form-control" id="password" v-model="loginSigninDetial.password">
@@ -61,7 +65,8 @@ const showSigninOption = ref(true)
 const errorLogInSignIn = ref<string>('')
 const loginSigninDetial = ref({
   email: "",
-  password: ""
+  password: "",
+  login: ""
 })
 const closeSignInbutton = ref('')
 

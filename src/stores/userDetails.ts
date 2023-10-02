@@ -18,7 +18,8 @@ export const useUserStore = defineStore('userDetails', {
     logIn(id, email) {
       this.userDetails = {
         id,
-        email
+        email,
+        login
       }
     },
     async checkIfLoggedWhenAppRun(){
