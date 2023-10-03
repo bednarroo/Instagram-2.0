@@ -106,6 +106,11 @@ const handleLogInSignIn = async () =>  {
     //Sign Up user
 
     if(checkUserExistsError){
+      errorLogInSignIn.value = checkUserExistsError.message
+      return storeUserDetails.changeLoading()
+    }
+
+    if(checkUserExistsData.length === 0){
       const { data: dataSignUp, error: singUpError } = await supabase.auth.signUp({
       email: loginSigninDetial.value.email,
       password: loginSigninDetial.value.password
