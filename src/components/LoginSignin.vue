@@ -96,30 +96,41 @@ const handleLogInSignIn = async () =>  {
 
   // Registration
   if (showSigninOption.value === true){
+
+    // check if this user exists
+    const { data: checkUserExistsData, error: checkUserExistsError } = await supabase
+    .from('users')
+    .select()
+    .eq('login', loginSigninDetial.value.login )
   
     //Sign Up user
 
-    const { data: dataSignUp, error: singUpError } = await supabase.auth.signUp({
-    email: loginSigninDetial.value.email,
-    password: loginSigninDetial.value.password
-})
-  if(singUpError){
-    console.log(singUpError, 'datasignuperror')
-    errorLogInSignIn.value = singUpError.message
-  }
-  if(dataSignUp){
-
-    // Create record in DB for user
+    if(checkUserExistsError){
+      const { data: dataSignUp, error: singUpError } = await supabase.auth.signUp({
+      email: loginSigninDetial.value.email,
+      password: loginSigninDetial.value.password
+    })
     
-    // set up storage
-    console.log(dataSignUp, 'dataSignUp')
-    storeUserDetails.logIn(dataSignUp.user.id,  dataSignUp.user.email)
-    console.log(dataSignUp.user)
-    closeSignInbutton.value.click()
-  }
+    
+    if(singUpError){
+      console.log(singUpError, 'datasignuperror')
+      errorLogInSignIn.value = singUpError.message
+    }
+    if(dataSignUp){
+      // 
+      
+      // Create record in DB for user
+      
+      // set up storage
+      console.log(dataSignUp, 'dataSignUp')
+      storeUserDetails.logIn(dataSignUp.user.id,  dataSignUp.user.email)
+      console.log(dataSignUp.user)
+      closeSignInbutton.value.click()
+    }
     return storeUserDetails.changeLoading()
+  }
 }
-// log in
+  // log in
   else{
   const { data: dataLogIn, error: errorLogiIn } = await supabase.auth.signInWithPassword({
     email: loginSigninDetial.value.email,
