@@ -117,15 +117,21 @@ const handleLogInSignIn = async () =>  {
       errorLogInSignIn.value = singUpError.message
     }
     if(dataSignUp){
-      // 
       
-      // Create record in DB for user
+      // Create record in DB for user and return it
+
+      const { data: dataCreateUser, error } = await supabase
+      .from('users')
+      .insert({ email: loginSigninDetial.value.email, login: loginSigninDetial.value.login, user_id: dataSignUp.user.id  })
+      .select()
       
-      // set up storage
-      console.log(dataSignUp, 'dataSignUp')
-      storeUserDetails.logIn(dataSignUp.user.id,  dataSignUp.user.email)
-      console.log(dataSignUp.user)
-      closeSignInbutton.value.click()
+      if(dataCreateUser){
+        // set up storage
+        console.log(dataSignUp, 'dataSignUp')
+        storeUserDetails.logIn(dataSignUp.user.id,  dataSignUp.user.email)
+        console.log(dataSignUp.user)
+        closeSignInbutton.value.click()
+      }
     }
     return storeUserDetails.changeLoading()
   }
