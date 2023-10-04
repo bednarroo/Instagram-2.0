@@ -90,20 +90,6 @@ const handleLogInWtihGoogle = async () => {
 })
 }
 
-const checkIfUserExists = async () => {
-  const { data: checkUserExistsData, error: checkUserExistsError } = await supabase
-    .from('users')
-    .select()
-    .eq('login', loginSigninDetial.value.login )
-}
-
-const createUser = async () => {
-  const { data: dataCreateUser, error: erorCreateUser } = await supabase
-      .from('users')
-      .insert({ email: loginSigninDetial.value.email, login: loginSigninDetial.value.login, user_id: dataSignUp.user.id  })
-      .select()
-}
-
 const handleLogInSignIn = async () =>  {
 
   storeUserDetails.changeLoading()
@@ -112,9 +98,12 @@ const handleLogInSignIn = async () =>  {
   if (showSigninOption.value === true){
 
     // check if this user exists
-    
-    checkIfUserExists();
+    const { data: checkUserExistsData, error: checkUserExistsError } = await supabase
+    .from('users')
+    .select()
+    .eq('login', loginSigninDetial.value.login )
 
+  
     //Sign Up user
 
     if(checkUserExistsError){
@@ -137,11 +126,13 @@ const handleLogInSignIn = async () =>  {
       
       // Create record in DB for user and return it
 
-      createUser()
-
-    // SetUp storage when user exists
+      const { data: dataCreateUser, error } = await supabase
+      .from('users')
+      .insert({ email: loginSigninDetial.value.email, login: loginSigninDetial.value.login, user_id: dataSignUp.user.id  })
+      .select()
       
       if(dataCreateUser){
+        console.log(dataCreateUser[0])
         // set up storage
         console.log(dataSignUp, 'dataSignUp')
         storeUserDetails.logIn(dataSignUp.user.id,  dataSignUp.user.email)
@@ -159,7 +150,6 @@ const handleLogInSignIn = async () =>  {
     password: loginSigninDetial.value.password
   })
   if(dataLogIn.user){
-
     storeUserDetails.logIn( dataLogIn.user.id, dataLogIn.user.email )
     closeSignInbutton.value.click()
     return  storeUserDetails.changeLoading()
