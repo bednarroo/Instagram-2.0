@@ -90,6 +90,13 @@ const handleLogInWtihGoogle = async () => {
 })
 }
 
+const checkIfUserExists = async () => {
+  const { data: checkUserExistsData, error: checkUserExistsError } = await supabase
+    .from('users')
+    .select()
+    .eq('login', loginSigninDetial.value.login )
+}
+
 const handleLogInSignIn = async () =>  {
 
   storeUserDetails.changeLoading()
@@ -98,11 +105,9 @@ const handleLogInSignIn = async () =>  {
   if (showSigninOption.value === true){
 
     // check if this user exists
-    const { data: checkUserExistsData, error: checkUserExistsError } = await supabase
-    .from('users')
-    .select()
-    .eq('login', loginSigninDetial.value.login )
-  
+    
+    checkIfUserExists();
+    
     //Sign Up user
 
     if(checkUserExistsError){
@@ -148,6 +153,7 @@ const handleLogInSignIn = async () =>  {
     password: loginSigninDetial.value.password
   })
   if(dataLogIn.user){
+
     storeUserDetails.logIn( dataLogIn.user.id, dataLogIn.user.email )
     closeSignInbutton.value.click()
     return  storeUserDetails.changeLoading()
