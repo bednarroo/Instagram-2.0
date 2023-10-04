@@ -9,7 +9,7 @@ export const useUserStore = defineStore('userDetails', {
       id: null,
       email: null,
       login: null,
-      userId
+      userId: null
     },
   }),
   actions: {
