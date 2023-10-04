@@ -15,7 +15,7 @@ export const useUserStore = defineStore('userDetails', {
       console.log(this.loading)
       this.loading = !this.loading
     },
-    logIn(id, email) {
+    logIn(id, email, login) {
       this.userDetails = {
         id,
         email,
