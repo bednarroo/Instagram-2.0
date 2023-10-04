@@ -135,6 +135,7 @@ const handleLogInSignIn = async () =>  {
         console.log(dataCreateUser[0])
         // set up storage
         console.log(dataSignUp, 'dataSignUp')
+        id, email, login
         storeUserDetails.logIn(dataSignUp.user.id,  dataSignUp.user.email)
         console.log(dataSignUp.user)
         closeSignInbutton.value.click()
