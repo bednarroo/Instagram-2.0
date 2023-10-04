@@ -132,13 +132,10 @@ const handleLogInSignIn = async () =>  {
       .select()
       
       if(dataCreateUser){
-        console.log(dataCreateUser[0])
         // set up storage
-        console.log(dataSignUp, 'dataSignUp')
-        id, email, login
-        storeUserDetails.logIn(dataSignUp.user.id,  dataSignUp.user.email)
-        console.log(dataSignUp.user)
+        storeUserDetails.logIn(dataCreateUser[0].id, dataCreateUser[0].email ,dataCreateUser[0].login ,dataCreateUser[0].user_id)
         closeSignInbutton.value.click()
+
       }
     }
     return storeUserDetails.changeLoading()
