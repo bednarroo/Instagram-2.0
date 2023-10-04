@@ -162,6 +162,10 @@ const handleLogInSignIn = async () =>  {
     .select()
     .eq('email', loginSigninDetial.value.email )
 
+    if(checkUserExistsData){
+      storeUserDetails.logIn(checkUserExistsData[0].id, checkUserExistsData[0].email ,checkUserExistsData[0].login ,checkUserExistsData[0].user_id)
+    }
+
     if(checkUserExistsError){
       errorLogInSignIn.value = errorLogiIn.message
       return storeUserDetails.changeLoading()     
