@@ -7,7 +7,9 @@ export const useUserStore = defineStore('userDetails', {
     loading: ref(false),
     userDetails: {
       id: null,
-      email: null
+      email: null,
+      login: null,
+      userId
     },
   }),
   actions: {
@@ -15,11 +17,12 @@ export const useUserStore = defineStore('userDetails', {
       console.log(this.loading)
       this.loading = !this.loading
     },
-    logIn(id, email, login) {
+    logIn(id, email, login, userId) {
       this.userDetails = {
         id,
         email,
-        login
+        login,
+        userId
       }
     },
     async checkIfLoggedWhenAppRun(){
