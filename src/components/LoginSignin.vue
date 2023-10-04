@@ -97,6 +97,13 @@ const checkIfUserExists = async () => {
     .eq('login', loginSigninDetial.value.login )
 }
 
+const createUser = async () => {
+  const { data: dataCreateUser, error: erorCreateUser } = await supabase
+      .from('users')
+      .insert({ email: loginSigninDetial.value.email, login: loginSigninDetial.value.login, user_id: dataSignUp.user.id  })
+      .select()
+}
+
 const handleLogInSignIn = async () =>  {
 
   storeUserDetails.changeLoading()
@@ -107,7 +114,7 @@ const handleLogInSignIn = async () =>  {
     // check if this user exists
     
     checkIfUserExists();
-    
+
     //Sign Up user
 
     if(checkUserExistsError){
@@ -130,10 +137,9 @@ const handleLogInSignIn = async () =>  {
       
       // Create record in DB for user and return it
 
-      const { data: dataCreateUser, error } = await supabase
-      .from('users')
-      .insert({ email: loginSigninDetial.value.email, login: loginSigninDetial.value.login, user_id: dataSignUp.user.id  })
-      .select()
+      createUser()
+
+    // SetUp storage when user exists
       
       if(dataCreateUser){
         // set up storage
