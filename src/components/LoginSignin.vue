@@ -150,19 +150,27 @@ const handleLogInSignIn = async () =>  {
     email: loginSigninDetial.value.email,
     password: loginSigninDetial.value.password
   })
-  if(dataLogIn.user){
-    const { data: checkUserExistsData, error: checkUserExistsError } = await supabase
-    .from('users')
-    .select()
-    .eq('login', loginSigninDetial.value.login )
 
-    closeSignInbutton.value.click()
-    return  storeUserDetails.changeLoading()
-  }
   if(errorLogiIn){
     errorLogInSignIn.value = errorLogiIn.message
     return storeUserDetails.changeLoading()
   }
+
+  if(dataLogIn.user){
+    const { data: checkUserExistsData, error: checkUserExistsError } = await supabase
+    .from('users')
+    .select()
+    .eq('email', loginSigninDetial.value.email )
+
+    if(checkUserExistsError){
+      errorLogInSignIn.value = errorLogiIn.message
+      return storeUserDetails.changeLoading()     
+    }
+
+    closeSignInbutton.value.click()
+    return  storeUserDetails.changeLoading()
+  }
+
   }
 }
 
