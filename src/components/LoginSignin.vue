@@ -116,6 +116,9 @@ const handleLogInSignIn = async () =>  {
       email: loginSigninDetial.value.email,
       password: loginSigninDetial.value.password
     })
+    if(checkUserExistsData.length !== 0){
+      return
+    }
     
     
     if(singUpError){
@@ -148,7 +151,11 @@ const handleLogInSignIn = async () =>  {
     password: loginSigninDetial.value.password
   })
   if(dataLogIn.user){
-    storeUserDetails.logIn( dataLogIn.user.id, dataLogIn.user.email )
+    const { data: checkUserExistsData, error: checkUserExistsError } = await supabase
+    .from('users')
+    .select()
+    .eq('login', loginSigninDetial.value.login )
+
     closeSignInbutton.value.click()
     return  storeUserDetails.changeLoading()
   }
