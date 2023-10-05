@@ -85,9 +85,11 @@ const showTitle = computed( () => {
 })
 
 const handleLogInWtihGoogle = async () => {
-  const { data, error } = await supabase.auth.signInWithOAuth({
+  const { data: dataLogInGoogle, error: errorLoginGoogle } = await supabase.auth.signInWithOAuth({
   provider: 'google',
 })
+  console.log(dataLogInGoogle);
+  console.log(storeUserDetails.userDetails);
 }
 
 const handleLogInSignIn = async () =>  {
