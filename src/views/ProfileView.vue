@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column">
     <AccountStats />
-    <button v-if="userStore.userDetails.id" type="button" class="btn fw-bolder btn-follow">
+    <button @click="followUser" v-if="userStore.userDetails.id && userStore.userDetails.login" type="button" class="btn fw-bolder btn-follow">
       Follow
     </button>
     <AddPicture v-if="userStore.userDetails.id" />
