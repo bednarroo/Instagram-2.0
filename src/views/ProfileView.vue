@@ -24,6 +24,7 @@ const userStore = useUserStore()
 const isUserFollowed = ref(false);
 
 const folloUnFollowUser = async () => {
+  userStore.changeLoading();
   if(isUserFollowed.value === false){
     const { error } = await supabase
     .from('subscription')
@@ -40,6 +41,7 @@ const folloUnFollowUser = async () => {
     .eq('follower', userStore.userDetails.login)
       isUserFollowed.value = false
   }
+  userStore.changeLoading();
 }
 
 const followingStatus = computed(()=> {
