@@ -33,6 +33,9 @@ const folloUnFollowUser = async () => {
       isUserFollowed.value = true
     }
   }
+  else{
+    
+  }
 }
 
 const followingStatus = computed(()=> {
