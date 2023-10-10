@@ -14,7 +14,6 @@ export const useUserStore = defineStore('userDetails', {
   }),
   actions: {
     changeLoading() {
-      console.log(this.loading)
       this.loading = !this.loading
     },
     logIn(id, email, login, userId) {
@@ -36,7 +35,6 @@ export const useUserStore = defineStore('userDetails', {
           .from('users')
           .select()
           .eq('email', this.userDetails.email )
-          console.log(checkUserExistsData)
         if(checkUserExistsData){
           this.logIn(checkUserExistsData[0].id, checkUserExistsData[0].email ,checkUserExistsData[0].login ,checkUserExistsData[0].user_id)
         }

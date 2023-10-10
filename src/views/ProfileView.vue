@@ -34,7 +34,11 @@ const folloUnFollowUser = async () => {
     }
   }
   else{
-    
+    const { error } = await supabase
+    .from('subscription')
+    .delete()
+    .eq('following', route.params.id)
+    .eq('follower', userStore.userDetails.login)
   }
 }
 
