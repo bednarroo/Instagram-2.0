@@ -22,12 +22,24 @@ import {supabase} from '../dataBase/index'
 const route = useRoute();
 const routerId = route.params.id
 const userStore = useUserStore()
+const isUserFollowed = false;
 
 const followUser = async () => {
   const { error } = await supabase
   .from('subscription')
-  .insert({ follower: userStore.userDetails.userId, following: route.params.id  })
+  .insert({ follower: userStore.userDetails.login, following: route.params.id  })
 }
+const checkIfUserIsFollowed = async () => {
+    const { data, error } = await supabase
+    .from('subscription')
+    .select()
+    .eq('follower', userStore.userDetails.login)
+    .eq('following', route.params.id)
+  } 
+
+onMounted(() => {
+  checkIfUserIsFollowed()
+})
 
 </script>
 
