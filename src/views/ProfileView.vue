@@ -35,6 +35,9 @@ const checkIfUserIsFollowed = async () => {
     .select()
     .eq('follower', userStore.userDetails.login)
     .eq('following', route.params.id)
+    if(data.length > 0){
+      isUserFollowed.value = true;
+    }
   } 
 
 onMounted(() => {
