@@ -18,7 +18,6 @@ import CardContainer from '../components/CardContainer.vue'
 import {useUserStore} from '../stores/userDetails.ts'
 import {supabase} from '../dataBase/index'
 
-
 const route = useRoute();
 const routerId = route.params.id
 const userStore = useUserStore()
