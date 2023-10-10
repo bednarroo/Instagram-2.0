@@ -4,7 +4,7 @@
     <button @click="folloUnFollowUser" v-if="userStore.userDetails.id && userStore.userDetails.login !== routerId " type="button" class="btn fw-bolder btn-follow">
       {{followingStatus}}
     </button>
-    <AddPicture v-if="userStore.userDetails.id" />
+    <AddPicture v-if="userStore.userDetails.id === route.params.id" />
     <CardContainer />
   </div>
 </template>
@@ -39,6 +39,7 @@ const folloUnFollowUser = async () => {
     .delete()
     .eq('following', route.params.id)
     .eq('follower', userStore.userDetails.login)
+      isUserFollowed.value = false
   }
 }
 
@@ -55,16 +56,12 @@ const checkIfUserIsFollowed = async () => {
     .select()
     .eq('following', route.params.id)
     .eq('follower', userStore.userDetails.login)
-    // if(data.length > 0){
-    //   isUserFollowed.value = true;
-    // }
-    console.log(data)
-    console.log(userStore.userDetails.login)
-    console.log(route.params.id)
+    if(data.length > 0){
+      isUserFollowed.value = true;
+    }
   } 
 
 onMounted(() => {
-  followUser()
   checkIfUserIsFollowed()
 })
 
