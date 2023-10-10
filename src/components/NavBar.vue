@@ -23,7 +23,7 @@
       <button type="button" class="btn btn-outline-primary m-1 p-0"><SearchProfile/></button>
       <template v-if="userStore.userDetails.id">
         <button type="button" class="btn btn-outline-primary m-1 p-0"><router-link class="nav-item nav-link" to="/about"><img src="../assets/about.png" style="height: 20px; margin-right: 5px;" alt=""><span style="font-size: 18px;"> About</span> </router-link></button>
-      <button type="button" class="btn btn-outline-primary m-1 p-0"><router-link class="nav-item nav-link" :to="`/profile/${userStore.userDetails.id}`">  <img src="../assets/person.svg" alt="" style=" margin-right: 5px;" > <span style="font-size: 18px;"> My account</span> </router-link></button>
+      <button type="button" class="btn btn-outline-primary m-1 p-0"><router-link class="nav-item nav-link" :to="`/profile/${userStore.userDetails.login}`">  <img src="../assets/person.svg" alt="" style=" margin-right: 5px;" > <span style="font-size: 18px;"> My account</span> </router-link></button>
       </template>
        <LoginSignin v-if="!userStore.userDetails.email" />
       <button v-else @click="logOut" type="button" class="btn btn-primary">Sign out</button>
