@@ -1,10 +1,10 @@
-<template v-if="showAlertLogin">
+<template  >
   <div class="jumbotron">
   <h1 class="display-4">Hello!</h1>
   <p class="lead">You're not loged in. Please log in to see more without any limits!</p>
   <hr class="my-4">
   <p>This is {{ reminderNumber }} reminder. When you will see third you won't be able to see anything.</p>
-  <button @click="closeModal()"  class="lead" v-if="reminderNumber < 3">
+  <button  class="lead" v-if="reminderNumber < 3">
     I understand
   </button>
 </div>
@@ -21,18 +21,20 @@ const showAlertLogin = ref(false)
 let myInterval = null
 
 onMounted(()=> {
-  if(useUserStore.userDetails.id === null){
-   myInterval = setInterval(changeAlertLoginStatus, 10000);
+  if(useUserStore?.userDetails?.id === null){
+   myInterval = setInterval(showModal, 10000);
   }
 });
 
 const closeModal = () => {
   showAlertLogin.value = false
   clearInterval(myInterval)
-  myInterval()
+  myInterval = setInterval(showModal, 10000);
 }
 
-
+const showModal = () => {
+ showAlertLogin.value = true;
+}
 </script>
 
 <style>
