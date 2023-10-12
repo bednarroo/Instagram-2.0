@@ -18,7 +18,13 @@ import {useUserStore} from '../stores/userDetails.ts'
 const userStore = useUserStore()
 const reminderNumber = ref(0)
 const showAlertLogin = ref(false)
-const myInterval = setInterval(changeAlertLoginStatus, 10000);
+const myInterval = null
+
+onMounted(()=> {
+  if(useUserStore.userDetails.id === null){
+    setInterval(changeAlertLoginStatus, 10000);
+  }
+})
 
 const changeAlertLoginStatus = () => {
   if(reminderNumber.value < 3){
