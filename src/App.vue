@@ -24,13 +24,18 @@ let myInterval = null
 
 onMounted (() => {
   userStore.checkIfLoggedWhenAppRun()
-  if(useUserStore?.userDetails?.id === null){
+  // console.log(useUserStore.userDetails)
+  // if(useUserStore.userDetails.id === null)
+  // {
+  //   console.log("bleble")
    myInterval = setInterval(showModal, 100);
-  }
-})
+  // }
+}
+)
 
 const closeModal = () => {
   showAlertLogin.value = false
+  console.log("XD")
   clearInterval(myInterval)
   myInterval = setInterval(showModal, 10000);
 }
