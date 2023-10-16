@@ -16,37 +16,47 @@ import AlertLogIn from './components/AlertLogIn.vue'
 import { onMounted, ref } from 'vue'
 import {useUserStore} from './stores/userDetails.ts'
 
-const handleClosePopUp = (flow) => {
-  if(showAlertLogin.value > 3) {
+const handleClosePopUp = () => {
+  if(reminderNumber.value > 3) {
     showCloseButton.value = false
     clearInterval(myInterval)
-  } else if (showAlertLogin.value <= 3) {
+  } else if (reminderNumber.value <= 3) {
     clearInterval(myInterval)
-    myInterval = setInterval(showModal, 10000);
-    showAlertLogin.value = true;
+    closeModal()
+    myInterval = setInterval(showModal, 5000);
+    console.log(reminderNumber.value)
+    showCloseButton.value = true
+
   }
+  reminderNumber.value++
+
 }
 
 
 const userStore = useUserStore()
 const reminderNumber = ref(0)
 const showAlertLogin = ref(false)
-const showCloseButton = ref(false)
+const showCloseButton = ref(true)
 let myInterval = null
 
 onMounted (() => {
+  
+  console.log(reminderNumber.value)
   userStore.checkIfLoggedWhenAppRun()
   // console.log(useUserStore.userDetails)
   // if(useUserStore.userDetails.id === null)
   // {
   //   console.log("bleble")
-   myInterval = setInterval(showModal, 4000);
+   myInterval = setInterval(showModal, 2000);
   // }
 }
 )
 
 const showModal = () => {
  showAlertLogin.value = true;
+}
+const closeModal = () => {
+ showAlertLogin.value = false;
 }
 
 </script>

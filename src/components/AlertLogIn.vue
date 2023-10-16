@@ -1,12 +1,17 @@
 <template  >
-  <div class="jumbotron">
-  <h1 class="display-4">Hello!</h1>
-  <p class="lead">You're not loged in. Please log in to see more without any limits!</p>
+  <div class="position-absolute top-0 start-0  w-100 h-100 d-flex flex-column align-items-center justify-content-evenly p-5" style="background-color: #ff00f7ec;">
+    <div>
+      <h1 class="fw-bolder">Hello!</h1>
+  <p class="fw-bolder">You're not loged in. Please log in to see more without any limits!</p>
   <hr class="my-4">
-  <p>This is {{ props.sreminderNumber }} reminder. When you will see third you won't be able to see anything.</p>
-  <button @click="$emit('hideAlertLogIn')" class="lead" v-if="showCloseButton">
+  <p class="fw-bolder">This is {{ props.sreminderNumber }} reminder. When you will see third you won't be able to see anything.</p>
+  <div class="d-flex align-items-center" >
+    <button @click="$emit('hideAlertLogIn')" class="btn btn-primary my-5" v-if="showCloseButton">
     I understand
   </button>
+  </div>
+
+    </div>
 </div>
 </template>
 
