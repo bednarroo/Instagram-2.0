@@ -4,7 +4,7 @@
   <RouterView />
   <Footer />
   <LoadingSpinner/>
-  <AlertLogIn  v-if="showAlertLogin !== false"/>
+  <AlertLogIn @hideAlertLogIn="handleClosePopUp" v-if="showAlertLogin !== false"/>
 
 </template>
 
@@ -15,6 +15,13 @@ import LoadingSpinner from './components/LoadingSpinner.vue'
 import AlertLogIn from './components/AlertLogIn.vue'
 import { onMounted, ref } from 'vue'
 import {useUserStore} from './stores/userDetails.ts'
+
+const handleClosePopUp = (flow) => {
+  console.log(showAlertLogin.value)
+  clearInterval(myInterval)
+  myInterval = setInterval(showModal, 10000);
+  showAlertLogin.value = false;
+}
 
 
 const userStore = useUserStore()
@@ -28,17 +35,10 @@ onMounted (() => {
   // if(useUserStore.userDetails.id === null)
   // {
   //   console.log("bleble")
-   myInterval = setInterval(showModal, 100);
+   myInterval = setInterval(showModal, 4000);
   // }
 }
 )
-
-const closeModal = () => {
-  showAlertLogin.value = false
-  console.log("XD")
-  clearInterval(myInterval)
-  myInterval = setInterval(showModal, 10000);
-}
 
 const showModal = () => {
  showAlertLogin.value = true;
