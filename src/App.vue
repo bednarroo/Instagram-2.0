@@ -39,16 +39,12 @@ const showAlertLogin = ref(false)
 const showCloseButton = ref(true)
 let myInterval = null
 
-onMounted (() => {
-  
-  console.log(reminderNumber.value)
-  userStore.checkIfLoggedWhenAppRun()
-  // console.log(useUserStore.userDetails)
-  // if(useUserStore.userDetails.id === null)
-  // {
-  //   console.log("bleble")
-   myInterval = setInterval(showModal, 2000);
-  // }
+onMounted ( async ()  => {
+  await userStore.checkIfLoggedWhenAppRun()
+  const {id} = userStore.userDetails
+  if( id === null){
+    myInterval = setInterval(showModal, 2000);
+  }
 }
 )
 
