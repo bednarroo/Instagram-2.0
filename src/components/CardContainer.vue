@@ -7,7 +7,10 @@
 <script lang="ts" setup>
 import SingleCard from "./SingleCard.vue"
 import {supabase} from '../dataBase/index.js'
-import { onMounted, ref } from "vue";
+import { onMounted, ref } from "vue"
+import {useUserStore} from '../stores/userDetails.ts'
+
+const userStore = useUserStore()
 
 
 const posts = ref([])
