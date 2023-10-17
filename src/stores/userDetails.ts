@@ -12,10 +12,12 @@ export const useUserStore = defineStore('userDetails', {
       userId: null
     },
   }),
-  actions: {
+  getters: {
     getId(){
       return this.userDetails.id
-    },
+    }
+  },
+  actions: {
     changeLoading() {
       this.loading = !this.loading
     },
