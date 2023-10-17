@@ -13,6 +13,9 @@ export const useUserStore = defineStore('userDetails', {
     },
   }),
   actions: {
+    getId(){
+      return this.userDetails.id
+    },
     changeLoading() {
       this.loading = !this.loading
     },

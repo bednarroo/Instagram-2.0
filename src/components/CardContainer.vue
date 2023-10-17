@@ -13,15 +13,39 @@ import {useUserStore} from '../stores/userDetails.ts'
 const userStore = useUserStore()
 
 
-const posts = ref([])
+// const posts = ref([])
 
 onMounted(  async ()  => {
-  const {data, error} = await supabase
-  .from('post')
-  .select()
-  .order('created_at',{ ascending: false })
-  posts.value = data
-})
+  const id = await userStore.getId()
+  await console.log(id)
+  if(userStore.userDetails.id){
+    console.log(userStore.userDetails.id)
+    // checkFollowing()
+  }
+
+
+    // const {data, error} = await supabase
+    // .from('post')
+    // .select()
+    // .order('created_at',{ ascending: false })
+    // posts.value = data
+  // } else{
+    // const {data, error} = await supabase
+    // .from('post')
+    // .select() 
+    // .order('created_at',{ ascending: false })
+    // posts.value = data
+  }
+);
+
+const checkFollowing =  async () => {
+ 
+    const {data: userfollowing, error} = await supabase
+    .from('subscription')
+    .select()
+    .eq("follower", userStore.userDetails.id);
+    console.log(userfollowing)
+}
 
 </script>
 
