@@ -13,7 +13,7 @@ import {useUserStore} from '../stores/userDetails.ts'
 const userStore = useUserStore()
 
 
-// const posts = ref([])
+const posts = ref([])
 
 onMounted(  async ()  => {
   const id = await userStore.getId()
