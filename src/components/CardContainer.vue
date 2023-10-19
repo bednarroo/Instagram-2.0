@@ -8,45 +8,29 @@
 <script lang="ts" setup>
 import SingleCard from "./SingleCard.vue"
 import {supabase} from '../dataBase/index.js'
-import { onMounted, ref } from "vue"
+import { onMounted, ref, watch } from "vue"
 import {useUserStore} from '../stores/userDetails.ts'
-
-
 
 const userStore =  useUserStore()
 const posts = ref([])
 
 
-onMounted( () => {
-  console.log("XD")
+
+onMounted( ( ) => {
   if(userStore.userDetails.id){
-    console.log(userStore.userDetails.id)
-  //  checkFollowing()
-  }
-
-
-    // const {data, error} = await supabase
-    // .from('post')
-    // .select()
-    // .order('created_at',{ ascending: false })
-    // posts.value = data
-  // } else{
-    // const {data, error} = await supabase
-    // .from('post')
-    // .select() 
-    // .order('created_at',{ ascending: false })
-    // posts.value = data
-  }
-);
-
-// const checkFollowing =  async () => {
- 
-//     const {data: userfollowing, error} = await supabase
-//     .from('subscription')
-//     .select()
-//     .eq("follower", userStore.userDetails.id);
-//     console.log(userfollowing)
-// }
+    checkFollowing(userStore.userDetails.id)
+}else {
+    checkFollowing(null)
+}
+})
+const checkFollowing =  async (id) => {
+  id === null ? id = '' : id
+    const {data: userfollowing, error} = await supabase
+    .from('subscription')
+    .select()
+    .eq("follower", id);
+    console.log(userfollowing)
+}
 
 </script>
 
