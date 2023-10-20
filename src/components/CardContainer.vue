@@ -18,8 +18,10 @@ const posts = ref([])
 onMounted( ( ) => {
   if(userStore.userDetails.id){
     checkFollowing(userStore.userDetails.id)
+    console.log("xd1")
 }else {
     checkFollowing(null)
+    console.log("xd2")
 }
 })
 const checkFollowing =  async (id) => {
@@ -27,12 +29,14 @@ const checkFollowing =  async (id) => {
     const {data: userfollowing, error} = await supabase
     .from('subscription')
     .select()
-    .eq("follower", id);
+    .eq("follower", id)
+    posts.value = userfollowing
   }else{
     const {data: userfollowing, error} = await supabase
     .from('subscription')
     .select()
-    .eq("follower", id);
+    posts.value = userfollowing[0]
+    console.log(posts.value)
   }
 }
 
