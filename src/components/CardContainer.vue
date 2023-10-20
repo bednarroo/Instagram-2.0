@@ -13,8 +13,6 @@ import {useUserStore} from '../stores/userDetails.ts'
 const userStore =  useUserStore()
 const posts = ref([])
 
-
-
 onMounted( ( ) => {
   if(userStore.userDetails.id){
     checkFollowing(userStore.userDetails.id)
@@ -32,11 +30,12 @@ const checkFollowing =  async (id) => {
     .eq("follower", id)
     posts.value = userfollowing
   }else{
-    const {data: userfollowing, error} = await supabase
+    const {data, error} = await supabase
     .from('subscription')
     .select()
-    posts.value = userfollowing[0]
-    console.log(posts.value)
+    console.log(data)
+    posts.value = data
+    return posts.value = data
   }
 }
 
