@@ -24,12 +24,20 @@ onMounted( ( ) => {
 }
 })
 const checkFollowing =  async (id) => {
-  id === null ? id = '' : id
+  if(id !== null){
+    id === null ? id = '' : id
     const {data: userfollowing, error} = await supabase
     .from('subscription')
     .select()
     .eq("follower", id);
     console.log(userfollowing)
+  }else{
+    id === null ? id = '' : id
+    const {data: userfollowing, error} = await supabase
+    .from('subscription')
+    .select()
+    .eq("follower", id);
+  }
 }
 
 </script>
