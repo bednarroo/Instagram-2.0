@@ -1,7 +1,6 @@
 <template>
   <div class="container-xxl d-flex flex-wrap mt-4 justify-content-evenly">
     <SingleCard v-for="post in posts" :key="post.id" :details="post" />
-    <h1>xd</h1>
   </div>  
 </template>
 
@@ -25,14 +24,11 @@ onMounted( ( ) => {
 })
 const checkFollowing =  async (id) => {
   if(id !== null){
-    id === null ? id = '' : id
     const {data: userfollowing, error} = await supabase
     .from('subscription')
     .select()
     .eq("follower", id);
-    console.log(userfollowing)
   }else{
-    id === null ? id = '' : id
     const {data: userfollowing, error} = await supabase
     .from('subscription')
     .select()
