@@ -21,10 +21,10 @@
           <label  for="FormControlInput1" class="form-label text-dark">Username</label>
           <input  type="email" class="form-control" v-model="username" id="FormControlInput1" placeholder="Please type user nick here!">
         </div>
-        <div class="spinner-border text-primary" role="status">
-  <span class="sr-only">Loading...</span>
-</div>
-        {{ record }}
+        <!-- <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div> -->
+        <SearchUserCard v-for="record in records" :record="record" :key="record.id"/>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -38,9 +38,10 @@
 <script setup lang="ts">
 import {ref, watch} from 'vue'
 import {supabase} from '../dataBase/index.js'
+import SearchUserCard from './SearchUserCard.vue'
 
 const username = ref("")
-const record = ref([])
+const records = ref([])
 
 watch(username, async(oldwaluve, newvalue)=>{
   if(username.value.length > 1){
@@ -48,7 +49,7 @@ watch(username, async(oldwaluve, newvalue)=>{
     .from('users')
     .select()
     .ilike('login', `%${username.value}%`)
-    record.value = data
+    records.value = data
   }
 })
 
