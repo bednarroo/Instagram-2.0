@@ -18,8 +18,8 @@
       </div>
       <div class="modal-body">
         <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label text-dark">Username</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Please type user nick here!">
+          <label  for="FormControlInput1" class="form-label text-dark">Username</label>
+          <input  type="email" class="form-control" v-model="username" id="FormControlInput1" placeholder="Please type user nick here!">
         </div>
       </div>
       <div class="modal-footer">
@@ -32,6 +32,21 @@
 </template>
 
 <script setup lang="ts">
+import {ref, watch} from 'vue'
+import {supabase} from '../dataBase/index.js'
+
+const username = ref("")
+const record = ref([])
+
+watch(username, async(oldwaluve, newvalue)=>{
+  if(username.value.length > 1){
+    const {data, error} = await supabase
+    .from('users')
+    .select()
+    .ilike('login', `%${username.value}%`)
+    console.log(data)
+  }
+})
 
 </script>
 
