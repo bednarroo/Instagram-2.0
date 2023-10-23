@@ -24,7 +24,9 @@
         <!-- <div class="spinner-border text-primary" role="status">
           <span class="sr-only">Loading...</span>
         </div> -->
-        <SearchUserCard v-for="record in records" :record="record" :key="record.id"/>
+        <div class="d-flex flex-wrap">
+          <SearchUserCard v-for="record in records" :record="record" :key="record.id"/>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -1,6 +1,6 @@
 !<template>
     <router-link :to="`/profile/${record.login}`">
-        <div class="card my-1 d-flex flex-row">
+        <div class="card m-2 d-flex flex-row">
             <div class="p-4">
                 <img src="../assets/Instagram.webp" width="50" alt="">
             </div>
