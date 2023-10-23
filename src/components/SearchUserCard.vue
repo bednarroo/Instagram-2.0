@@ -4,7 +4,7 @@
             <div class="p-4">
                 <img src="../assets/Instagram.webp" width="50" alt="">
             </div>
-            <div class="card-body">
+            <div class="card-body d-flex align-items-center">
                 {{ record.login }}
             </div>
         </div>
