@@ -12,7 +12,7 @@ import {useUserStore} from '../stores/userDetails.ts'
 
 const userStore =  useUserStore()
 const posts = ref([])
-const following = ref([])
+const following = ref(null)
 
 onMounted( ( ) => {
   if(userStore.userDetails.id){
@@ -23,16 +23,25 @@ onMounted( ( ) => {
 })
 const checkFollowing =  async (id) => {
   if(id !== null){
-    const {data: userfollowing, error} = await supabase
+    const {data, error} = await supabase
     .from('subscription')
     .select()
     .eq("follower", id)
-    following.value = userfollowing
+    following.value = data
+    console.log(data)
   }
   if(following.value !== null){
-    // tutaj wyszukaj odpowiednie posty
+    const {data, error} = await supabase
+    .from('post')
+    .select()
+    .eq("user_id", following.value)
   }
-  // tutaj wyszukaj odpowiednie posty
+  else{
+    const {data, error} = await supabase
+    .from('post')
+    .select()
+    posts.value = data
+  }
 
 }
 
