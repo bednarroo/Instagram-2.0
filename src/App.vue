@@ -23,8 +23,7 @@ const handleClosePopUp = () => {
   } else if (reminderNumber.value <= 3) {
     clearInterval(myInterval)
     closeModal()
-    myInterval = setInterval(showModal, 5000);
-    console.log(reminderNumber.value)
+    myInterval = setInterval(showModal, 5000)
     showCloseButton.value = true
 
   }
