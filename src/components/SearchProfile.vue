@@ -21,6 +21,10 @@
           <label  for="FormControlInput1" class="form-label text-dark">Username</label>
           <input  type="email" class="form-control" v-model="username" id="FormControlInput1" placeholder="Please type user nick here!">
         </div>
+        <div class="spinner-border text-primary" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+        {{ record }}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -44,7 +48,7 @@ watch(username, async(oldwaluve, newvalue)=>{
     .from('users')
     .select()
     .ilike('login', `%${username.value}%`)
-    console.log(data)
+    record.value = data
   }
 })
 

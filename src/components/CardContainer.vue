@@ -28,7 +28,6 @@ const checkFollowing =  async (id) => {
     .select()
     .eq("follower", id)
     following.value = data
-    console.log(data)
   }
   if(following.value !== null){
     const {data, error} = await supabase
