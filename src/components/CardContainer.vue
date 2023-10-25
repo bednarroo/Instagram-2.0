@@ -1,5 +1,9 @@
 <template>
   <div class="container-xxl d-flex flex-wrap mt-4 justify-content-evenly">
+    <div class="subscribtion__message my-5 d-flex flex-column" v-if="posts.length === 0 && userStore.userDetails.id ">
+      <h2 class="mx-4 text-center">You're not subscribing anything. Please add some subscription to see interesting content!</h2>
+      <button class="btn btn-primary my-4 mx-5 "> Show users!</button>
+    </div>
     <SingleCard v-for="post in posts" :key="post.id" :details="post" />
   </div>  
 </template>
@@ -20,6 +24,7 @@ onMounted( ( ) => {
 } else {
     checkFollowing(null)
 }
+console.log(userStore.userDetails.id)
 })
 const checkFollowing =  async (id) => {
   if(id !== null){
@@ -47,5 +52,7 @@ const checkFollowing =  async (id) => {
 </script>
 
 <style>
-
+.subscribtion__message{
+  max-width: 600px;
+}
 </style>

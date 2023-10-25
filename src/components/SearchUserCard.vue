@@ -2,7 +2,7 @@
     <router-link class="text-decoration-none" :to="`/profile/${record.login}`">
         <div class="card m-2 d-flex flex-row">
             <div class="p-4">
-                <img src="../assets/Instagram.webp" width="50" alt="">
+                <img :src='record.main_photo' width="50" alt="">
             </div>
             <div class="card-body d-flex align-items-center">
                 <h4 >
