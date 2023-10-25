@@ -1,5 +1,9 @@
 <template>
   <div class="container-xxl d-flex flex-wrap mt-4 justify-content-evenly">
+    <div>
+      <h2>You're not subscribing anything. Please add some subscription to see interesting content!</h2>
+      <button class="btn btn-primary"> Show users!</button>
+    </div>
     <SingleCard v-for="post in posts" :key="post.id" :details="post" />
   </div>  
 </template>
