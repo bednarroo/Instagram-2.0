@@ -22,7 +22,7 @@
           <input  type="email" class="form-control" v-model="username" id="FormControlInput1" placeholder="Please type user nick here!">
         </div>
         <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading...</span>
+          <span class="sr-only">Loading... </span>
         </div>
         <div class="d-flex flex-wrap">
           <SearchUserCard v-for="record in records" :record="record" :key="record.id"/>
