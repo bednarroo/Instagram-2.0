@@ -1,6 +1,6 @@
 <template>
   <div class="container-xxl d-flex flex-wrap mt-4 justify-content-evenly">
-    <div>
+    <div v-if="posts.length === 0 && userStore.userDetails.id ">
       <h2>You're not subscribing anything. Please add some subscription to see interesting content!</h2>
       <button class="btn btn-primary"> Show users!</button>
     </div>
@@ -24,6 +24,7 @@ onMounted( ( ) => {
 } else {
     checkFollowing(null)
 }
+console.log(userStore.userDetails.id)
 })
 const checkFollowing =  async (id) => {
   if(id !== null){
