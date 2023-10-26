@@ -1,5 +1,5 @@
 !<template>
-    <router-link class="text-decoration-none" :to="`/profile/${record.login}`">
+    <router-link @click="something" class="text-decoration-none" :to="`/profile/${record.login}`">
         <div class="card m-2 d-flex flex-row">
             <div class="p-4">
                 <img :src='record.main_photo' width="50" alt="">
@@ -14,6 +14,14 @@
 </template>
 
 <script setup>
+
+const modalToggle = document.getElementById('searchModal') 
+var modal = bootstrap.Modal.getInstance(modalToggle) 
+
+const something = () => {
+    console.log(modalToggle)
+    console.log(modal)
+}
 
 const props = defineProps({
   record: Object,

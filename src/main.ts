@@ -8,6 +8,7 @@ import './assets/main.css'
 
 
 const pinia = createPinia()
+window.bootstrap = bootstrap 
 
 createApp(App)
   .use(router)
