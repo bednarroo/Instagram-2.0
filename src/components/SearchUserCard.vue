@@ -19,7 +19,7 @@ import {Modal} from 'bootstrap'
 let myModal = new Modal('#searchModal');
 
 const closeSearchModal = () => {
-    myModal.show = 0
+    myModal.show()
 }
 
 const props = defineProps({
