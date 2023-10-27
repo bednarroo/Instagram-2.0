@@ -13,18 +13,27 @@ import SingleCard from "./SingleCard.vue"
 import {supabase} from '../dataBase/index.js'
 import { onMounted, ref, watch } from "vue"
 import {useUserStore} from '../stores/userDetails.ts'
+import {Modal} from 'bootstrap'
+
+let myModal = new Modal('#searchModal');
+
+const closeSearchModal = () => {
+
+    myModal.show()
+}
+
 
 const userStore =  useUserStore()
 const posts = ref([])
 const following = ref(null)
 
 onMounted( ( ) => {
+  closeSearchModal()
   if(userStore.userDetails.id){
     checkFollowing(userStore.userDetails.id)
 } else {
     checkFollowing(null)
 }
-console.log(userStore.userDetails.id)
 })
 const checkFollowing =  async (id) => {
   if(id !== null){
