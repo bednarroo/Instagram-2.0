@@ -27,7 +27,7 @@
           <span class="sr-only mx-5">Loading... </span>
         </div>
         <div class="d-flex flex-wrap">
-          <SearchUserCard @closeSearchModal="hideSearchPopUp" v-for="record in records" :record="record" :key="record.id"/>
+          <SearchUserCard v-for="record in records" :record="record" :key="record.id"/>
         </div>
       </div>
       <div class="modal-footer">
@@ -43,19 +43,10 @@
 import {ref, watch} from 'vue'
 import {supabase} from '../dataBase/index.js'
 import SearchUserCard from './SearchUserCard.vue'
-// import {boostrap} from 'bootstrap'
-
 
 const username = ref("")
 const records = ref([])
 const loadSearching = ref(false)
-// var myModalEl = document.querySelector('#searchModal')
-// var myModal = bootstrap.Modal.getOrCreateInstance(myModalEl)
-
-const hideSearchPopUp = () => {
-  // myModal.hide()
-  console.log(myModal)
-}
 
 watch(username, async(oldwaluve, newvalue)=>{
   if(username.value.length > 1){
