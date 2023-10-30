@@ -20,8 +20,9 @@ import {Modal} from 'bootstrap'
 let myModal = new Modal('#searchModal');
 
 const closeSearchModal = () => {
-    console.log(myModal)
-    myModal.hide()
+    myModal.show()
+    // console.log(myModal)
+    // myModal.hide()
 }
 
 const props = defineProps({
