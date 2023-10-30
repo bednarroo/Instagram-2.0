@@ -14,12 +14,17 @@
 </template>
 
 <script setup>
+import {Modal} from 'bootstrap'
 
 const props = defineProps({
   record: Object,
 })
 
 const emit = defineEmits(['closeSearchModal'])
+
+const closeSearchModal = () => {
+    console.log("XD")
+}
 
 </script>
 
