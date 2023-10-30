@@ -27,7 +27,7 @@
           <span class="sr-only mx-5">Loading... </span>
         </div>
         <div class="d-flex flex-wrap">
-          <SearchUserCard v-for="record in records" :record="record" :key="record.id"/>
+          <SearchUserCard @hideSearchPopUp="closeSearchModal" v-for="record in records" :record="record" :key="record.id"/>
         </div>
       </div>
       <div class="modal-footer">
