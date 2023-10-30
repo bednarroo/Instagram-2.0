@@ -20,6 +20,7 @@ let myModal = new Modal('#searchModal');
 const closeSearchModal = () => {
 
     myModal.show()
+    myModal.hide()
 }
 
 
