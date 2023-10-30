@@ -27,7 +27,7 @@
           <span class="sr-only mx-5">Loading... </span>
         </div>
         <div class="d-flex flex-wrap">
-          <SearchUserCard @hideSearchPopUp="closeSearchModal" v-for="record in records" :record="record" :key="record.id"/>
+          <SearchUserCard @closeSearchModal="hideSearchPopUp" v-for="record in records" :record="record" :key="record.id"/>
         </div>
       </div>
       <div class="modal-footer">
@@ -47,6 +47,10 @@ import SearchUserCard from './SearchUserCard.vue'
 const username = ref("")
 const records = ref([])
 const loadSearching = ref(false)
+
+const hideSearchPopUp = () => {
+  console.log('no co tam?')
+}
 
 watch(username, async(oldwaluve, newvalue)=>{
   if(username.value.length > 1){

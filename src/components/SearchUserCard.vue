@@ -21,10 +21,6 @@ const props = defineProps({
 
 const emit = defineEmits(['closeSearchModal'])
 
-const closeSearchModal = () => {
-    console.log("XD")
-}
-
 </script>
 
 <style>
