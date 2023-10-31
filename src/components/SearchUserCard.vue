@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import {Modal} from 'bootstrap'
+import { Modal } from 'bootstrap'
 
 
 const closeSearchModal = () => {
