@@ -10,7 +10,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">{{ showTitle }}</h5>
-        <button type="button" ref="closeSignInbutton" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="alert alert-primary" role="alert">
@@ -60,6 +60,7 @@
 import {ref, computed, onMounted} from 'vue'
 import {supabase} from '../dataBase/index'
 import {useUserStore} from '../stores/userDetails.ts'
+import { Modal } from "bootstrap"
 
 const showSigninOption = ref(true)
 const errorLogInSignIn = ref<string>('')
@@ -68,7 +69,12 @@ const loginSigninDetial = ref({
   password: "",
   login: ""
 })
-const closeSignInbutton = ref('')
+
+const closeLoginModal = () => {
+    const truck_modal = document.querySelector('#loginModal');
+    const modal = Modal.getInstance(truck_modal);
+    modal.hide()
+}
 
 const storeUserDetails = useUserStore()
 
@@ -137,8 +143,7 @@ const handleLogInSignIn = async () =>  {
       if(dataCreateUser){
         // set up storage
         storeUserDetails.logIn(dataCreateUser[0].id, dataCreateUser[0].email ,dataCreateUser[0].login ,dataCreateUser[0].user_id)
-        closeSignInbutton.value.click()
-
+        closeLoginModal();
       }
     }
     return storeUserDetails.changeLoading()
@@ -171,7 +176,7 @@ const handleLogInSignIn = async () =>  {
       return storeUserDetails.changeLoading()     
     }
 
-    closeSignInbutton.value.click()
+    closeLoginModal()
     return  storeUserDetails.changeLoading()
   }
 
