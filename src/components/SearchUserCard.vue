@@ -14,7 +14,6 @@
 </template>
 
 <script setup>
-import {onMounted} from 'vue'
 import {Modal} from 'bootstrap'
 
 
