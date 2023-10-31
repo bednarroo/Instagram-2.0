@@ -1,6 +1,6 @@
 !<template>
-    <router-link @click="closeSearchModal"  class="text-decoration-none" :to="`/profile/${record.login}`">
-        <div @click="closeSearchModal" class="card m-2 d-flex flex-row">
+    <router-link @click="closeSearchModal" class="text-decoration-none" :to="`/profile/${record.login}`">
+        <div class="card m-2 d-flex flex-row">
             <div class="p-1 m-2">
                 <img class="m-1" :src='record.main_photo' width="50" alt="">
             </div>
@@ -14,15 +14,14 @@
 </template>
 
 <script setup>
+import {onMounted} from 'vue'
 import {Modal} from 'bootstrap'
 
-// uyj tego na tej samej 
-let myModal = new Modal('#searchModal');
 
 const closeSearchModal = () => {
-    myModal.show()
-    // console.log(myModal)
-    // myModal.hide()
+    const truck_modal = document.querySelector('#searchModal');
+    const modal = Modal.getInstance(truck_modal);
+    modal.hide()
 }
 
 const props = defineProps({

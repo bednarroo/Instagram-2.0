@@ -43,6 +43,22 @@
 import {ref, watch} from 'vue'
 import {supabase} from '../dataBase/index.js'
 import SearchUserCard from './SearchUserCard.vue'
+// import {Modal} from 'bootstrap'
+
+// let myModal = new Modal('#searchModal');
+// const closeSearchModal = () => {
+//     myModal.show()
+//     // console.log(myModal)
+//     // myModal.hide()
+// }
+
+// onMounted(()=>{
+//     closeSearchModal();
+// })
+
+// const h1Click = ()=>{
+//   console.log('dsada')
+// }
 
 const username = ref("")
 const records = ref([])
