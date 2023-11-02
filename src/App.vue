@@ -32,7 +32,6 @@ const handleClosePopUp = () => {
 
 }
 
-
 const userStore = useUserStore()
 const reminderNumber = ref(0)
 const showAlertLogin = ref(false)
@@ -41,6 +40,7 @@ let myInterval = null
 const route = useRoute()
 
 onMounted ( async ()  => {
+  console.log(route.path)
   await userStore.checkIfLoggedWhenAppRun()
   const {id} = userStore.userDetails
   if( id === null){
@@ -50,10 +50,12 @@ onMounted ( async ()  => {
 )
 
 // fetch the user information when params change
-  watch(
-    () => route.params.id,
+  watch( () => route.path, () => {
      console.log("XD")
+  }
    )
+
+
 
 
 const showModal = () => {
