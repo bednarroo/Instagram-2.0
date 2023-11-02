@@ -16,7 +16,7 @@ import AlertLogIn from './components/AlertLogIn.vue'
 import { onMounted, onUpdated, ref, watch } from 'vue'
 import {useUserStore} from './stores/userDetails.ts'
 import { useRoute } from 'vue-router'
-import { bootstrap } from 'bootstrap'
+import * as bootstrap from 'bootstrap'
 
 const handleClosePopUp = () => {
   if(reminderNumber.value > 3) {
@@ -34,10 +34,9 @@ const handleClosePopUp = () => {
 }
 
 const closeNavBarMenu = () => {
-    const truck_modal = document.querySelector('#navbarNavAltMarkup');
-    const modal = new bootstrap.Collapse(truck_modal);
-    modal.toogle()
-    console.log("XDSADS")
+    const truck_modal = document.querySelector('#navbarNavAltMarkup')
+    const modal = new bootstrap.Collapse(truck_modal)
+    () => modal.toogle()
 }
 
 const userStore = useUserStore()
