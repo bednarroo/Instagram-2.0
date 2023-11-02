@@ -13,7 +13,7 @@ import {RouterView, onBeforeRouteUpdate} from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import LoadingSpinner from './components/LoadingSpinner.vue'
 import AlertLogIn from './components/AlertLogIn.vue'
-import { onMounted, onUpdated, ref } from 'vue'
+import { onMounted, onUpdated, ref, watch } from 'vue'
 import {useUserStore} from './stores/userDetails.ts'
 
 const handleClosePopUp = () => {
@@ -46,13 +46,6 @@ onMounted ( async ()  => {
   }
 }
 )
-
-onUpdated(()=>{
-  onBeforeRouteUpdate( (to, from)=>{
-  console.log(to, from)
-})
-})
-
 
 
 const showModal = () => {
