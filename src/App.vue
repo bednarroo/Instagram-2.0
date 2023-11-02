@@ -9,12 +9,13 @@
 </template>
 
 <script lang="ts" setup>
-import {RouterView, onBeforeRouteUpdate} from 'vue-router'
+import {RouterView} from 'vue-router'
 import NavBar from './components/NavBar.vue'
 import LoadingSpinner from './components/LoadingSpinner.vue'
 import AlertLogIn from './components/AlertLogIn.vue'
 import { onMounted, onUpdated, ref, watch } from 'vue'
 import {useUserStore} from './stores/userDetails.ts'
+import { useRoute } from 'vue-router'
 
 const handleClosePopUp = () => {
   if(reminderNumber.value > 3) {
@@ -37,6 +38,7 @@ const reminderNumber = ref(0)
 const showAlertLogin = ref(false)
 const showCloseButton = ref(true)
 let myInterval = null
+const route = useRoute()
 
 onMounted ( async ()  => {
   await userStore.checkIfLoggedWhenAppRun()
@@ -46,6 +48,12 @@ onMounted ( async ()  => {
   }
 }
 )
+
+// fetch the user information when params change
+  watch(
+    () => route.params.id,
+     console.log("XD")
+   )
 
 
 const showModal = () => {
