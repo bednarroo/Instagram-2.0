@@ -18,6 +18,31 @@ import {useUserStore} from './stores/userDetails.ts'
 import { useRoute } from 'vue-router'
 import * as bootstrap from 'bootstrap'
 
+const reminderNumber = ref(0)
+const showAlertLogin = ref(false)
+const showCloseButton = ref(true)
+let myInterval = null
+
+const navBarModal = document.querySelector('#navbarNavAltMarkup')
+const navBarModalToogle = new bootstrap.Collapse(navBarModal)
+
+const userStore = useUserStore()
+const route = useRoute()
+
+watch( () => route.path, () => {
+     console.log("XD")
+     closeNavBarMenu()
+  })
+
+onMounted ( async ()  => {
+  console.log(route.path)
+  await userStore.checkIfLoggedWhenAppRun()
+  const {id} = userStore.userDetails
+  if( id === null){
+    myInterval = setInterval(showModal, 2000);
+  }
+})
+
 const handleClosePopUp = () => {
   if(reminderNumber.value > 3) {
     showCloseButton.value = false
@@ -32,41 +57,15 @@ const handleClosePopUp = () => {
   reminderNumber.value++
 
 }
-
-const closeNavBarMenu = () => {
-    const truck_modal = document.querySelector('#navbarNavAltMarkup')
-    const modal = new bootstrap.Collapse(truck_modal)
-    () => modal.toogle()
-}
-
-const userStore = useUserStore()
-const reminderNumber = ref(0)
-const showAlertLogin = ref(false)
-const showCloseButton = ref(true)
-let myInterval = null
-const route = useRoute()
-
-onMounted ( async ()  => {
-  console.log(route.path)
-  await userStore.checkIfLoggedWhenAppRun()
-  const {id} = userStore.userDetails
-  if( id === null){
-    myInterval = setInterval(showModal, 2000);
-  }
-}
-)
-
-// fetch the user information when params change
-  watch( () => route.path, () => {
-     console.log("XD")
-     closeNavBarMenu()
-  })
-
 const showModal = () => {
  showAlertLogin.value = true;
 }
 const closeModal = () => {
  showAlertLogin.value = false;
+}
+
+const closeNavBarMenu = () => {
+  () => navBarModalToogle.toogle()
 }
 
 </script>
