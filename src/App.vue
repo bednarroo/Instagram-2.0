@@ -36,7 +36,7 @@ const handleClosePopUp = () => {
 const closeNavBarMenu = () => {
   const navBarModal = document.querySelector('#navbarNavAltMarkup');
   const navBarModalToogle = new bootstrap.Collapse(navBarModal);
-  () => navBarModalToogle.hide()
+  navBarModalToogle.hide()
 }
 
 const userStore = useUserStore()
