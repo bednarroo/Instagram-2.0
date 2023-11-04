@@ -18,6 +18,13 @@ import {useUserStore} from './stores/userDetails.ts'
 import { useRoute } from 'vue-router'
 import * as bootstrap from 'bootstrap'
 
+const userStore = useUserStore()
+const reminderNumber = ref(0)
+const showAlertLogin = ref(false)
+const showCloseButton = ref(true)
+let myInterval = null
+const route = useRoute()
+
 const handleClosePopUp = () => {
   if(reminderNumber.value > 3) {
     showCloseButton.value = false
@@ -33,18 +40,22 @@ const handleClosePopUp = () => {
 
 }
 
+const showModal = () => {
+ showAlertLogin.value = true;
+}
+const closeModal = () => {
+ showAlertLogin.value = false;
+}
+
 const closeNavBarMenu = () => {
-  const navBarModal = document.querySelector('#navbarNavAltMarkup');
-  const navBarModalToogle = new bootstrap.Collapse(navBarModal);
+  const navBarModal = document.querySelector('#navbarNavAltMarkup')
+  const navBarModalToogle = new bootstrap.Collapse(navBarModal, {
+    toggle: false,
+  })
   navBarModalToogle.hide()
 }
 
-const userStore = useUserStore()
-const reminderNumber = ref(0)
-const showAlertLogin = ref(false)
-const showCloseButton = ref(true)
-let myInterval = null
-const route = useRoute()
+
 
 onMounted ( async ()  => {
   console.log(route.path)
@@ -56,17 +67,11 @@ onMounted ( async ()  => {
 }
 )
 
-// fetch the user information when params change
   watch( () => route.path, () => {
      closeNavBarMenu()
   })
 
-const showModal = () => {
- showAlertLogin.value = true;
-}
-const closeModal = () => {
- showAlertLogin.value = false;
-}
+
 
 </script>
 
