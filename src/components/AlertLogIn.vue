@@ -6,7 +6,7 @@
   <hr class="my-4">
   <p class="fw-bolder">This is {{ props.sreminderNumber }} reminder. When you will see third you won't be able to see anything.</p>
   <div class="d-flex align-items-center" >
-    <button  class="btn btn-primary my-5" v-if="showCloseButton">
+    <button  class="btn btn-primary my-5" @click="$emit('hideAlertLogIn')" v-if="showCloseButton">
     I understand
   </button>
   <button class="btn btn-primary my-5" @click="showLogInModal">Log in</button>
