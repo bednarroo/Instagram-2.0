@@ -60,6 +60,15 @@
 import {ref, computed, onMounted} from 'vue'
 import {supabase} from '../dataBase/index'
 import {useUserStore} from '../stores/userDetails.ts'
+import { Modal } from 'bootstrap'
+
+
+const closeSearchModal = () => {
+    const truck_modal = document.querySelector('#searchModal');
+    const modal = Modal.getInstance(truck_modal);
+    console.log(modal)
+    modal.hide()
+}
 
 const showSigninOption = ref(true)
 const errorLogInSignIn = ref<string>('')
