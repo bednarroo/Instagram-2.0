@@ -20,6 +20,7 @@ import { Modal } from 'bootstrap'
 const closeSearchModal = () => {
     const truck_modal = document.querySelector('#searchModal');
     const modal = Modal.getInstance(truck_modal);
+    console.log(modal)
     modal.hide()
 }
 
