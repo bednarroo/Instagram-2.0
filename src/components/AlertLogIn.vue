@@ -21,9 +21,6 @@ import {ref, onMounted} from 'vue'
 import {useUserStore} from '../stores/userDetails.ts'
 import { Modal } from "bootstrap"
 
-
-
-
 const showLogInModal = () => {
     const truck_modal = document.querySelector('#searchModal');
     console.log(truck_modal);
@@ -34,7 +31,6 @@ const showLogInModal = () => {
 onMounted(()=>{
   showLogInModal();
 })
-
 
 
 const userStore = useUserStore()
