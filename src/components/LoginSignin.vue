@@ -60,7 +60,10 @@
 import {ref, computed, onMounted} from 'vue'
 import {supabase} from '../dataBase/index'
 import {useUserStore} from '../stores/userDetails.ts'
-import { Modal } from "bootstrap"
+
+onMounted(()=>{
+  showLogInModal()
+})
 
 const showSigninOption = ref(true)
 const errorLogInSignIn = ref<string>('')

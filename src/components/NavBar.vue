@@ -36,10 +36,9 @@
 <script lang="ts" setup>
 import SearchProfile from './SearchProfile.vue'
 import LoginSignin from './LoginSignin.vue'
-import {ref} from 'vue'
+import {onMounted, ref} from 'vue'
 import {useUserStore} from '../stores/userDetails.ts'
 import { storeToRefs } from 'pinia';
-
 
 const userStore = useUserStore()
 

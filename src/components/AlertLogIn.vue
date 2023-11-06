@@ -19,7 +19,7 @@
 <script setup lang="ts">
 import {ref, onMounted} from 'vue'
 import {useUserStore} from '../stores/userDetails.ts'
-import { Modal } from "bootstrap"
+
 
 const userStore = useUserStore()
 const showAlertLogin = ref(false)
@@ -38,11 +38,7 @@ const closeModal = () => {
   myInterval = setInterval(showModal, 10000);
 }
 
-const showLogInModal = () => {
-    const truck_modal = document.querySelector('#searchModal');
-    const modal = Modal.getInstance(truck_modal);
-    console.log(modal)
-}
+
 </script>
 
 <style>
