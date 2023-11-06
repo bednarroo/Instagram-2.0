@@ -61,10 +61,6 @@ import {ref, computed, onMounted} from 'vue'
 import {supabase} from '../dataBase/index'
 import {useUserStore} from '../stores/userDetails.ts'
 
-onMounted(()=>{
-  showLogInModal()
-})
-
 const showSigninOption = ref(true)
 const errorLogInSignIn = ref<string>('')
 const loginSigninDetial = ref({
@@ -73,11 +69,6 @@ const loginSigninDetial = ref({
   login: ""
 })
 
-const closeLoginModal = () => {
-    const truck_modal = document.querySelector('#loginModal');
-    const modal = Modal.getInstance(truck_modal);
-    modal.hide()
-}
 
 const storeUserDetails = useUserStore()
 

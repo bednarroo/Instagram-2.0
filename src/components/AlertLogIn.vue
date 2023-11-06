@@ -22,16 +22,15 @@ import {useUserStore} from '../stores/userDetails.ts'
 import { Modal } from "bootstrap"
 
 const showLogInModal = () => {
-    const truck_modal = document.querySelector('#searchModal');
+    const truck_modal = document.querySelector('#loginModal');
     console.log(truck_modal);
     const modal = Modal.getInstance(truck_modal);
     console.log(modal)
 }
 
 onMounted(()=>{
-  showLogInModal();
+  showLogInModal()
 })
-
 
 const userStore = useUserStore()
 const showAlertLogin = ref(false)
