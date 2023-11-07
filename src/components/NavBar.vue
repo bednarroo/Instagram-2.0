@@ -27,6 +27,7 @@
       </template>
        <LoginSignin v-if="!userStore.userDetails.email" />
       <button v-else @click="logOut" type="button" class="btn btn-primary">Sign out</button>
+      <button @click="hideBackgroundPink">Hide background pink</button>
     </div>
     </div>
 
@@ -39,6 +40,11 @@ import LoginSignin from './LoginSignin.vue'
 import {onMounted, ref} from 'vue'
 import {useUserStore} from '../stores/userDetails.ts'
 import { storeToRefs } from 'pinia';
+
+
+const hideBackgroundPink = () => {
+  console.log("XD")
+}
 
 const userStore = useUserStore()
 
