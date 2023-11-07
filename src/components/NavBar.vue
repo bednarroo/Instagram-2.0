@@ -40,11 +40,6 @@ import {onMounted, ref} from 'vue'
 import {useUserStore} from '../stores/userDetails.ts'
 import { storeToRefs } from 'pinia';
 
-
-const hideBackgroundPink = () => {
-  console.log("XD")
-}
-
 const userStore = useUserStore()
 
 const { userDetails } = storeToRefs(userStore)
