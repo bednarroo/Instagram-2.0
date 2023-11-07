@@ -27,7 +27,6 @@
       </template>
        <LoginSignin v-if="!userStore.userDetails.email" />
       <button v-else @click="logOut" type="button" class="btn btn-primary">Sign out</button>
-      <button @click="hideBackgroundPink">Hide background pink</button>
     </div>
     </div>
 
